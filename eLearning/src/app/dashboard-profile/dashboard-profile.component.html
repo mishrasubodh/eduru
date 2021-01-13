@@ -1,0 +1,141 @@
+<div class="container-fluid">
+  <div class="inner-page">
+	<div class="row">
+    <!-- sidebar  -->
+		<div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <!-- sidebar end-->
+
+    <!-- main content  -->
+
+    <!-- Profile sidebar-->
+		<div class="col-md-10">
+			<aside class="profile-innerpage">
+				<div class="profile">
+          <div class="profile-pic">
+            <img src="../../assets/img/female-icon.jpg" class="img-fluid " alt="male"/>
+         </div>
+          <a href="#" class="add">+</a>
+        </div>
+        <div class="form-profile">
+          <div class="profile-heading">
+            <h5>Personal Details</h5>
+            <a (click)="openDashboardProfile()" >+ Edit</a>
+            </div>
+          <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                  <mat-label>First Name</mat-label>
+                  <input [(ngModel)]="user.First_Name" [disabled]="!checked" matInput >
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field>
+                  <mat-label>Last Name</mat-label>
+                  <input [(ngModel)]="user.Last_Name" [disabled]="!checked" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field>
+                  <mat-label>E-mail ID</mat-label>
+                  <input [(ngModel)]="user.Email" [disabled]="!checked" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>Date of birth</mat-label>
+                <input matInput [(ngModel)]="user.dob" [disabled]="!checked" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>Phone no.</mat-label>
+                <input [(ngModel)]="user.mob_no" [disabled]="!checked" matInput>
+              </mat-form-field>
+          </div>
+
+          <!-- <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Subject</mat-label>
+              <input [(ngModel)]="user.Subject" [disabled]="!checked" matInput>
+            </mat-form-field>
+        </div> -->
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Few word about you</mat-label>
+            <input [(ngModel)]="user.fewWord" [disabled]="!checked" matInput>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12">
+              <button mat-raised-button color="primary" [disabled]="!checked" (click)="submitTeacherInfo(user)">Save</button>
+          </div>
+          </div>
+          <br/>
+          <div class="profile-heading">
+            <h5>Bank Details</h5>
+            <a (click)="openbaankdetail()" >+ Edit</a>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-label>First Name</mat-label>
+                    <input [(ngModel)]="bakInfo.bankFirstName"[disabled]="!bankdetail"  matInput>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-label>Last Name</mat-label>
+                    <input [(ngModel)]="bakInfo.bankLastName" [disabled]="!bankdetail" matInput>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-label>Bank Name</mat-label>
+                    <input [(ngModel)]="bakInfo.bankName" [disabled]="!bankdetail" matInput>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-label>Branch Name</mat-label>
+                    <input [(ngModel)]="bakInfo.BranchName" [disabled]="!bankdetail" matInput>
+                  </mat-form-field>
+              </div>
+
+              <div class="col-md-6">
+                <mat-form-field>
+                  <mat-label>Account no.</mat-label>
+                  <input type="number" [(ngModel)]="bakInfo.accountNo" [disabled]="!bankdetail" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>Re-enter Account no.</mat-label>
+                <input type="number" [(ngModel)]="bakInfo.ReAccountNo" [disabled]="!bankdetail" matInput>
+              </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Ifsc Code</mat-label>
+              <input [(ngModel)]="bakInfo.IfscCode" [disabled]="!bankdetail" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-md-12">
+          <button mat-raised-button color="primary" [disabled]="!bankdetail" (click)="submitTeacherBanckInf(bakInfo)">Save</button>
+      </div>
+            </div>
+
+        </div>
+
+
+			</aside>
+    </div>
+    <!-- Profile sidebar end-->
+
+
+	</div>
+</div>
+</div>

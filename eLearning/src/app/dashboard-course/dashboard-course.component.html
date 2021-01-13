@@ -1,0 +1,131 @@
+<div class="container-fluid">
+  <div class="inner-page">
+	<div class="row">
+    <!-- sidebar  -->
+		<div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <!-- sidebar end-->
+
+    <!-- main content  -->
+
+    <!-- Profile sidebar-->
+		<div class="col-md-10">
+			<aside class="profile-innerpage">
+				<div class="course-dashboard">
+          <div class="profile-heading">
+            <h5>Active Courses</h5>
+            </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <mat-card class="course-card">
+                    <img mat-card-image src="../../assets/img/course1.png" alt="course">
+                    <mat-card-content>
+                      <a (click)="openDashboardCourseView()">
+                      <div class="price">
+                        <h6>$79</h6>
+                      </div>
+                      <h5>Courses Name</h5>
+                      <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>5.0 (rating)</span>
+                      </div>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. </p>
+                      <ul class="type">
+                        <li><span><i class="fas fa-book">&nbsp;</i></span> 25 lessons</li>
+                        <li><span><i class="fas fa-video">&nbsp;</i></span> 15 Videos</li>
+                      </ul>
+                    </a>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+                <div class="col-md-3">
+                  <mat-card class="course-card">
+                    <img mat-card-image src="../../assets/img/course1.png" alt="course">
+                    <mat-card-content>
+                      <a href="#">
+                      <div class="price">
+                        <h6>$79</h6>
+                      </div>
+                      <h5>Courses Name</h5>
+                      <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>5.0 (rating)</span>
+                      </div>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. </p>
+                      <ul class="type">
+                        <li><span><i class="fas fa-book">&nbsp;</i></span> 25 lessons</li>
+                        <li><span><i class="fas fa-video">&nbsp;</i></span> 15 Videos</li>
+                      </ul>
+                    </a>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+              <div class="profile-heading">
+                <h5>Add Courses</h5>
+                </div>
+                <div class="course-add">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <mat-form-field>
+                        <mat-label>Course Name</mat-label>
+                        <input [(ngModel)]="course.name" matInput></mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                      <mat-form-field >
+                        <mat-label>Course Category</mat-label>
+                        <select matNativeControl required [(ngModel)]="course.category">
+                          <option value="Category 1">Choose course category</option>
+                          <option value="Category 1">Category 1</option>
+                          <option value="Category 2">Category 2</option>
+                          <option value="Category 3">Category 3</option>
+                          <option value="Category 4">Category 4</option>
+                        </select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                      <mat-form-field>
+                        <mat-label> ₹ Amount </mat-label>
+                        <input type="number" [(ngModel)]="course.amount" matInput>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-12">
+                      <mat-form-field>
+                        <mat-label>Course Description</mat-label>
+                        <textarea  matInput [(ngModel)]="course.description"></textarea>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-12">
+                   
+                        <mat-label>Upload Video</mat-label><br>
+                        <input input type="file" (change)="getUrl($event.target)" [(ngModel)]="course.videoUrl">
+                   
+                      
+                    </div>
+                    <div class="col-md-12">
+                      <button mat-raised-button color="primary" (click)="submit(course)">Save</button>
+                  </div>
+
+                  </div>
+                </div>
+            </div>
+
+
+
+			</aside>
+    </div>
+    <!-- Profile sidebar end-->
+
+
+	</div>
+</div>
+</div>

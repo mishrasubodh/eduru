@@ -1,0 +1,18 @@
+.profile-innerpage{
+    padding: 30px 0;
+  .form-profile{
+    width:80%;
+    margin:auto;
+    .profile-heading{
+      border-bottom: 1px solid #3d2768;
+      margin: 20px 0;
+      color: #3d2768;
+      h5{
+        font-weight: 600;
+      }
+    }
+    mat-form-field{
+      width: 100%;
+    }
+  }
+}

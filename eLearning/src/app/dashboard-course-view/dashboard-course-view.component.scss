@@ -1,0 +1,23 @@
+.course-dashboard{
+  padding:20px;
+  .view-video{
+    margin:30px 0 10px 0;
+    p{
+      font-weight: 600;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    ul{
+      padding: 0;
+      li{
+        display: inline-block;
+        width: 15%;
+        margin-right: 10px;
+        img{
+          width:100%;
+        }
+      }
+    }
+  }
+}

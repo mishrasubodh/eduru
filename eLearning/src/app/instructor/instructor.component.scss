@@ -1,0 +1,22 @@
+.instructor-box{
+    .instructor-card{
+        background: #fff;
+        padding: 0;
+        border-radius: 20px;
+        .instructor-text{
+            text-align: center;
+            padding: 20px;
+            h4{
+                font-weight: 600;
+            }
+            h6{
+                font-weight: 600;
+                color: #a06dfe;
+            }
+            p{
+                font-size: 14px;
+                color: #a8a8a8;
+            }
+        }
+    }
+}

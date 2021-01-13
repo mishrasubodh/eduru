@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+ @import './assets/style/style.scss';
+ @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+ @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
+
+
+
+
+
+
+
+
+ .cdk-overlay-dark-backdrop {
+  background: rgba(0,0,0,.9) !important;
+}
+.cdk-overlay-pane{
+  margin:auto !important;
+}
+.mat-dialog-container{
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+
+ //code for popup message
+
+ .party{
+  // background: #070707; 
+  background:#007E33;
+}
+.red-snackbar {
+  background: #e53f3f;
+}
+.mat-expansion-panel-header {
+   background: #eeeeee !important;
+}
+.mat-expansion-panel {
+  box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2) !important;
+}
+.mat-expansion-panel-body {
+  padding: 0px 10px 10px 10px !important;
+}
+
+.panel-heading {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 15px !important;
+  margin: 0 0 5px 0 !important;
+  font-weight: 300 !important;
+}

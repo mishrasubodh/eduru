@@ -1,0 +1,24 @@
+.detail-card{
+  .card-detail{
+    text-align: center;
+    box-shadow: none;
+    .icon-card {
+      width: 70px;
+      margin-bottom: 20px;
+     }
+    .mat-icon{
+      margin: 10px 0;
+    }
+    h5{
+      font-size: 18px;
+      color: #3d2768;
+      font-family: "Jost", sans-serif;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    p{
+      color: #7c7c7c;
+      font-size: 12px;
+    }
+  }
+}

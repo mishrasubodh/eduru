@@ -1,0 +1,107 @@
+<div class="login-section">
+	<div class="row">
+		<div class="col-md-6 log-side">
+			<img src="../../assets/img/dashboard-login.jpg" class="img-fluid " alt="dashboard login">
+		</div>
+		<div class="col-md right">
+			<div class="container h-100">
+				<div class="row align-items-center h-100">
+					<div class="card shadow border-0 mx-auto">
+						<div class="loader h-100">
+							<div class="row">
+								<div class="card-body p-5">
+
+									<h5 class="text-grey text-center mt-0 font-weight-bold">Sign Up</h5>
+									<p class="text-center text-muted">Fill the following details.</p>
+									<div class="row mb-3 text-center">
+										<img src="../../../assets/img/login.png" class="mx-auto text-center" height="80" />
+									</div>
+									<!-- <form id="signIn"> -->
+									<div class="form-group p-1">
+										<div class="row register-form">
+											<div class="col-md-6">
+												<label for="username text-muted">
+													<h6 class="text-grey"><i class="fa fa-user"></i> FirstName</h6>
+												</label>
+												<input name="FirstName" [(ngModel)]="register.FirstName" placeholder="Enter your FirstName" required="true" id="FirstName" type="text" class="form-control">
+												<div class="invalid-feedback">Please enter your FirstName</div>
+											</div>
+											<div class="col-md-6">
+												<label for="username text-muted">
+													<h6 class="text-grey"><i class="fa fa-user"></i> LastName</h6>
+												</label>
+												<input name="LastName" [(ngModel)]="register.lastName" placeholder="Enter your LastName" required="true" id="LastName" type="text" class="form-control">
+												<div class="invalid-feedback">Please enter your LastName</div>
+											</div>
+											<div class="col-md-6">
+												<label for="username text-muted">
+													<h6 class="text-grey"><i class="fas fa-calendar-alt"></i> DOB</h6>
+												</label>
+												<input name="DOB" [(ngModel)]="register.DOB" placeholder="Enter your DOB" required="true" id="DOB" type="date" class="form-control">
+												<div class="invalid-feedback">Please enter your DOB</div>
+											</div>
+											<div class="col-md-6">
+												<label for="username text-muted">
+													<h6 class="text-grey"><i class="fas fa-graduation-cap"></i> Category</h6>
+												</label>
+												<select name="category" id="aantal" class="form-control" placeholder="Enter your category" [(ngModel)]="register.category">
+													<option *ngFor="let option of options" [value]="option">{{option}}</option>
+												</select>
+											</div>
+											<div class="col-md-6">
+												<label for="username text-muted">
+													<h6 class="text-grey"><i class="fas fa-mobile-alt"></i> Phone No.</h6>
+												</label>
+												<input name="Mob_no" [(ngModel)]="register.Mob_no" placeholder="Enter your Mob_no" required="true" id="Mob_no" type="number" class="form-control">
+												<div class="invalid-feedback">Please enter your Mob_no</div>
+											</div>
+											<div class="col-md-6">
+												<label for="username text-muted">
+													<h6 class="text-grey"><i class="fas fa-envelope"></i> Email</h6>
+												</label>
+												<input name="email" [(ngModel)]="register.email" placeholder="Enter your email" required="true" id="email" type="email" class="form-control">
+												<div class="invalid-feedback">Please enter your email</div>
+											</div>
+											<div class="col-md-6">
+												<label for="password">
+													<h6 class="text-grey"><i class="fa fa-key"></i> Password</h6>
+												</label>
+												<input name="password" [(ngModel)]="register.Password" placeholder="Enter your password" required="true" id="password" type="password" class="form-control">
+												<div class="invalid-feedback">Please enter your password</div>
+											</div>
+											<div class="col-md-6">
+												<label for="password">
+													<h6 class="text-grey"><i class="fa fa-key"></i> Re-enter Password</h6>
+												</label>
+												<input name="password" [(ngModel)]="register.rePassword" placeholder="Enter your password" required="true" id="password" type="password" class="form-control">
+												<div class="invalid-feedback">Please enter your password</div>
+											</div>
+											<div class="col-md-12">
+                        <div class="checkbox">
+                          <label><input type="checkbox"  [(ngModel)]="register.termandcondition"> I agree to the Terms and Conditions.</label>
+                        </div>
+                        <div class="invalid-feedback">Please enter your password</div>
+
+												<!-- <label for="password" class="mt-4">
+													<h6 class="text-grey"><i class="fa fa-key"></i> termandcondition && condition</h6>
+												</label>
+												<input name="termandcondition" [(ngModel)]="register.termandcondition" placeholder="Enter your termandcondition" required="true" id="termandcondition" type="checkbox" class="form-control">
+												<div class="invalid-feedback">Please enter your password</div> -->
+											</div>
+											<div class="col-md-12 text-center">
+												<button id="submit" class="btn btn-primary mx-auto"> <span class="btn-text" (click)="submit(register)">Submit</span>
+												</button>
+											</div>
+										</div>
+									</div>
+									<p class="register">Already have an account? <a (click)="gosignin()">Sign in</a>
+									</p>
+									<!-- </form> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,115 @@
+<div class="container-fluid">
+  <div class="inner-page">
+	<div class="row">
+    <!-- sidebar  -->
+		<div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <!-- sidebar end-->
+
+    <!-- main content  -->
+		<div class="col-md-7" *ngIf='currentTeacherData'>
+			<main>
+				<div class="welcomeBack">
+        <div class="textContainer" >
+						<div class="title"> welcome {{currentTeacherData.FirstName}} {{currentTeacherData.lastName}}</div>
+          </div>
+        </div>
+				<div class="coursesContainer">
+					<a  class="course"> <span class="level"><i class="fas fa-user"></i></span>
+						<span class="field">No. of Student</span>
+						<span class="type">458</span>
+						<span class="arrow">→</span>
+					</a>
+					<a  class="course"> <span class="level"><i class="fas fa-graduation-cap"></i></span>
+						<span class="field">No. of Courses</span>
+						<span class="type">05</span>
+						<span class="arrow">→</span>
+					</a>
+					<a class="course"> <span class="level"><i class="fas fa-dollar-sign"></i></span>
+						<span class="field">Revenue</span>
+						<span class="type">$500</span>
+						<span class="arrow">→</span>
+					</a>
+        </div>
+
+				<div class="courses">
+          <h5>Courses Details</h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>S No.</th>
+                <th>Courses Name</th>
+                <th>No. of Video</th>
+                <th> No. of Student</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Mathematics</td>
+                <td>06</td>
+                <td>102</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Physics</td>
+                <td>15</td>
+                <td>502</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chemistry</td>
+                <td>20</td>
+                <td>199</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Mathematics</td>
+                <td>06</td>
+                <td>102</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Physics</td>
+                <td>15</td>
+                <td>502</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Chemistry</td>
+                <td>20</td>
+                <td>199</td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+
+			</main>
+    </div>
+    <!-- main content end -->
+
+    <!-- Profile sidebar-->
+		<div class="col-md-3" *ngIf='currentTeacherData'>
+			<aside class="home">
+        <!-- <a (click)="openDashboardProfileView()"  class="edit"><i class="fas fa-plus"></i> Edit profile</a> -->
+				<div class="profile">
+          <div class="profile-pic">
+            <img src="../../assets/img/female-icon.jpg" class="img-fluid " alt="male"/>
+         </div>
+					<span class="name">{{currentTeacherData.FirstName}} {{currentTeacherData.lastName}}</span>
+					<span class="title">{{currentTeacherData.category}}</span>
+        </div>
+        <div class="profile-detail">
+          <p><b>DOB:</b>{{currentTeacherData.DOB}}</p>
+          <p><b>Mobile No.:</b> {{currentTeacherData.mob_no}}</p>
+          <p><b>Mail:</b>{{currentTeacherData.email}}</p>
+          </div>
+			</aside>
+    </div>
+    <!-- Profile sidebar end-->
+
+
+	</div>
+</div>
+</div>

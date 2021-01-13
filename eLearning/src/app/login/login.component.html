@@ -1,0 +1,54 @@
+
+
+
+<div class="login-section">
+  <div class="row">
+    <div class="col-md-6  log-side">
+          <img src="../../assets/img/dashboard-login.jpg" class="img-fluid" alt="dashboard login">
+    </div>
+
+    <div class="col-md right">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="card shadow border-0 mx-auto">
+
+                    <div class="loader h-100">
+
+                        <div class="row">
+                            <div class="card-body p-5">
+                                <h4 class="text-grey text-center mt-0 font-weight-bold">Sign In</h4>
+                                <p class="text-center text-muted">Enter your username and password.</p>
+                            <div class="row mb-3 text-center">
+                                <img src="../../../assets/img/login.png" class="mx-auto text-center" height="80"/>
+                            </div>
+                                <!-- <form id="signIn"> -->
+                                    <div class="form-group p-1">
+                                        <label for="username text-muted">
+                                            <h6 class="text-grey"><i class="fa fa-user"></i> Username</h6>
+                                        </label>
+                                        <input name="username" placeholder="Enter your username" [(ngModel)]="login.email" required="true" id="username" type="text" class="form-control">
+                                        <div class="invalid-feedback">Please enter your username</div>
+                                        <label for="password" class="mt-4">
+                                            <h6 class="text-grey"><i class="fa fa-key"></i> Password</h6>
+                                        </label>
+                                        <input name="password" placeholder="Enter your password" [(ngModel)]="login.password" required="true" id="password" type="password" class="form-control">
+                                        <div class="invalid-feedback">Please enter your password</div>
+                                    </div>
+                                    <p class="forget"> <a (click)="goforget()" >Forget Password?</a></p>
+
+                                    <div class="row">
+                                        <button (click)="godasboard(login)"  id="submit" class="btn btn-primary mx-auto">
+                                            <span class="btn-text">Submit</span>
+                                        </button>
+                                    </div>
+                                    <p class="register"> New to abc pvt ltd ? <a (click)="goregister()" >Sign up</a></p>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

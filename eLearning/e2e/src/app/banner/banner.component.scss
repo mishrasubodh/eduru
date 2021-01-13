@@ -1,0 +1,66 @@
+.banner{
+  position: relative;
+  .typing-slider{
+    position: absolute;
+    top: 50%;
+    margin-right: -50%;
+    transform: translate(0%, -50%);
+    color: #fff;
+    width: 35%;
+    h2{
+      color: #3d2769;
+      font-weight: bold;
+    }
+    p{
+      font-weight: 500;
+      font-size: 18px;
+      color: #000;
+      line-height: 1.3;
+    }
+  }
+}
+  .banner-btn {
+    width:80%;
+  }
+
+.input-group{
+  input{
+    width: 300px;
+    border-radius: 5px;
+    padding: 20px 10px;
+    position: relative;
+    z-index: 0;
+    box-shadow: none;
+    border: 1px solid #eaeaea;
+  }
+  .input-group-append{
+    margin-left:-40px;
+    position: relative;
+    z-index: 9;
+  }
+}
+
+
+@media (max-width:767px) {    
+    .banner{
+      .typing-slider{
+          width: 50%;        
+          top:60%;
+        h2{
+          font-size: 18px;
+        }
+        p{
+          font-size: 12px;  
+            display: none;
+        }
+        .banner-btn{
+          width: 90%;
+        }
+      }
+      .input-group{
+        input{
+          padding:0 10px;
+        }
+      }
+  }
+}

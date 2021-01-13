@@ -1,0 +1,85 @@
+.course{
+
+  .course-card{
+    margin: 10px 0;
+    .mat-card-content{
+      position: relative;
+        
+      .price{
+        position: absolute;
+        right: 0;
+        top:-35px;
+        background: #3d2768;
+        color: #fff;
+        border-radius: 50%;
+        padding: 5px;
+        h6{
+          font-weight: 600;
+          margin: 2px 0px;   
+        }
+      }
+      .rating{
+        i{
+          color:#ffe500;
+          margin-bottom: 10px;
+          margin-right: 2px;
+        }
+        span{
+          font-size: 10px;
+          color:#989898;
+        }
+      }
+      h5{
+        font-size: 15px;
+        font-weight: bold;
+      }
+      p{
+        font-size:12px;
+        font-weight: 300;
+        margin-bottom: 5px;
+        color:#989898;
+      }
+      .type{
+        list-style: none;
+        padding: 0;
+        li{
+          display: inline-block;
+          margin-right: 20px;
+          font-size: 12px;
+          color: #989898;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow: visible !important; 
+}
+::ng-deep .mat-tab-label {
+  border-bottom: none;
+  opacity: 1 !important;
+  color: #a39bb1;
+  border-radius: 30px;
+  padding: 5px 20px !important;
+  min-width: auto !important;
+  height: 35px !important;
+}
+
+::ng-deep .mat-tab-label-active {
+  background: #3d2768 !important;
+  color: #fff;
+}
+::ng-deep .mat-ink-bar{
+  background: transparent !important;
+}
+
+::ng-deep  .mat-tab-body{
+  margin-top: 40px;
+}
+::ng-deep .mat-tab-header {
+  border-bottom: 0px solid rgba(0,0,0,.12);
+}
+::ng-deep .mat-tab-labels{
+  justify-content: center !important;
+}

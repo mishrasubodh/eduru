@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+ @import './assets/style/style.scss';
+ @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+ @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
+
+
+
+
+
+
+
+
+ .cdk-overlay-dark-backdrop {
+  background: rgba(0,0,0,.9) !important;
+}
+.cdk-overlay-pane{
+  margin:auto !important;
+}
+.mat-dialog-container{
+  padding: 0 !important;
+  background: transparent !important;
+}
