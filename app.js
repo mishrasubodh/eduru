@@ -27,6 +27,8 @@ require("./models/student");
 require("./models/teacher");
 require("./models/registration");
 require("./models/bankDetails");
+require("./models/material");
+require("./models/materialsPath")
 
 
 
