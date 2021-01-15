@@ -7,7 +7,8 @@ exports.addTeacherBankDetails = async (req, res, next) => {
      let alreadyCurentData = await BanksDetails.findOne({
           TeacherId: req.body.TeacherId
      })
-     if (alreadyCurentData) {
+     if (alreadyCurentData) { 
+          
           console.log("coming in allready bankdetails")
           let obj = {
                bankFirstName: req.body.bankFirstName,
