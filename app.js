@@ -35,6 +35,7 @@ app.use("/dashboard", require("./routes/registration"));
 app.use("/dashboard", require("./routes/login"));
 app.use("/dashboard", require("./routes/teachers"));
 app.use("/dashboard", require("./routes/bankDetails"));
+app.use("/dashboard", require("./routes/material"));
 
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
