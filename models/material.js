@@ -12,10 +12,7 @@ const materialSchema = new mongoose.Schema(
       },
     teacherId: {
       type: String,
-      required: true,
-      // index: {
-      //   unique: true,
-      // },    
+      required: true,   
     },
     videoPath:{ type : Array , "default" : [] }
     },
