@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GlobalService} from '../services/global.service'
 import { Router } from "@angular/router";
 @Component({
   selector: 'app-professional-course',
@@ -8,6 +9,7 @@ import { Router } from "@angular/router";
 export class ProfessionalCourseComponent implements OnInit {
 
   constructor(
+     public globalService : GlobalService,
     private router: Router
   ) { }
 
@@ -16,6 +18,7 @@ export class ProfessionalCourseComponent implements OnInit {
 
 openCourseDetail(){
     this.router.navigate(['course-detail']);
+    this.globalService.scrolData()
   }
 
 }

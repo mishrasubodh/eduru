@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GlobalService} from '../services/global.service'
 import { Router } from "@angular/router";
 @Component({
   selector: 'app-education-course',
@@ -8,12 +9,15 @@ import { Router } from "@angular/router";
 export class EducationCourseComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    public globalService : GlobalService,
   ) { }
 
   ngOnInit() {
   }
   openCourseDetail(){
     this.router.navigate(['course-detail']);
+    this.globalService.scrolData()
+    
   }
 }
