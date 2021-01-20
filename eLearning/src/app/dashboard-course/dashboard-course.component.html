@@ -78,17 +78,24 @@
                     <div class="col-md-4">
                       <mat-form-field>
                         <mat-label>Course Name</mat-label>
-                        <input [(ngModel)]="course.name" matInput></mat-form-field>
+                        <input [(ngModel)]="course.name" matInput>
+                      </mat-form-field>
                     </div>
                     <div class="col-md-4">
                       <mat-form-field >
                         <mat-label>Course Category</mat-label>
-                        <select matNativeControl required [(ngModel)]="course.category">
-                          <option value="Category 1">Choose course category</option>
-                          <option value="Category 1">Category 1</option>
-                          <option value="Category 2">Category 2</option>
-                          <option value="Category 3">Category 3</option>
-                          <option value="Category 4">Category 4</option>
+                        <select matNativeControl required [(ngModel)]="selectcatery" (change)="SelectCat(value)">
+                          <option  [value]="cat" *ngFor="let cat of category" >{{cat.name}}</option>
+                          
+                        </select>
+                      </mat-form-field>
+                    </div>
+                      <div class="col-md-4">
+                      <mat-form-field >
+                        <mat-label>Sub Category</mat-label>
+                        <select matNativeControl required [(ngModel)]="course.SubCategory" (change)="SelectSubCat(course.category)">
+                          <option  *ngFor="let SuCat of SubCategory" >{{subcat}}</option>
+                          
                         </select>
                       </mat-form-field>
                     </div>
@@ -107,7 +114,18 @@
                     <div class="col-md-12">
                    
                         <mat-label>Upload Video</mat-label><br>
-                        <input input type="file" (change)="getUrl($event.target)" [(ngModel)]="course.videoUrl">
+                        <div>
+                          <ng-container>
+                              <input type="file" id="file" multiple 
+                                  (change)="getFileDetails($event)">
+                      
+                              <button (click)="uploadFiles()">Upload</button>
+                          </ng-container>
+                      </div>
+                      <!-- <pre>{{myFiles | json}}</pre> -->
+                      <div *ngFor="let file of myFiles">
+                        <div>*  {{file.name}} - {{file.type}} - {{file.size}}</div> 
+                      </div>
                    
                       
                     </div>
