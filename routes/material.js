@@ -30,8 +30,7 @@ const cat_subCat = {
     {"name": "Data Science", "parentId":2},
     {"name": "Data Science", "parentId":2},
 
-
-
+    
     {"name": "Public Speaking", "parentId":3},
     {"name": "Personal Brand Development", "parentId":3},
       ]
