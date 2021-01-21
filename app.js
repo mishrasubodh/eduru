@@ -34,23 +34,22 @@ app.use(function(req, res, next) {
   
 
 require("./mongo");
-require("./models/admin");
-require("./models/student");
-require("./models/teacher");
-require("./models/registration");
-require("./models/bankDetails");
-require("./models/material");
-require("./models/materialsPath");
+require("./models/adminModel");
+require("./models/studentModel");
+require("./models/teacherModel");
+require("./models/registrationModel");
+require("./models/bankDetailsModel");
+require("./models/materialModel");
 //require("./models/Category")
 
-app.use("/dashboard", require("./routes/admin"));
-app.use("/dashboard", require("./routes/students"));
-app.use("/dashboard", require("./routes/teachers"));
-app.use("/dashboard", require("./routes/registration"));
-app.use("/dashboard", require("./routes/login"));
-app.use("/dashboard", require("./routes/teachers"));
-app.use("/dashboard", require("./routes/bankDetails"));
-app.use("/dashboard", require("./routes/material"));
+app.use("/dashboard", require("./routes/adminRouter"));
+app.use("/dashboard", require("./routes/studentsRouter"));
+app.use("/dashboard", require("./routes/teachersRouter"));
+app.use("/dashboard", require("./routes/registrationRouter"));
+app.use("/dashboard", require("./routes/loginRouter"));
+app.use("/dashboard", require("./routes/teachersRouter"));
+app.use("/dashboard", require("./routes/bankDetailsRouter"));
+app.use("/dashboard", require("./routes/materialRouter"));
 
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
