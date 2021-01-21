@@ -3,11 +3,25 @@ const Teacher = mongoose.model("Teacher");
 const Materials = mongoose.model("materialDetail");
 const FilessPath = mongoose.model("materialPath");
 const Registration = mongoose.model("registration");
+var ffmpeg = require('ffmpeg');
 
 module.exports = {
   saveFiles: async (req, res) => {
+
+
+
     const filesPath = await FilessPath.find({ teacherId: req.params.teacherId }, { filePaths: 1, _id: 0 });
+    //---------------take screenshot of video------------------------
     console.log('filesPathfilesPathfilesPathfilesPathfilesPath :>>', filesPath[0].filePaths)
+console.log('object --------------------------:>>', filesPath)
+var proc = new ffmpeg('/media/shipgig/ea00d876-fb89-43b6-bd2c-785b91adbec4/Anand/eduru/routes/public/uploads/JWT Token Verification _ Route Protection _ Build Node.js REST API  in Hindi _ Part-12.mp4')
+  .takeScreenshots({
+      count: 1,
+      timemarks: [ '600' ] // number of seconds
+    }, '/media/shipgig/ea00d876-fb89-43b6-bd2c-785b91adbec4/Anand/eduru/routes/public', function(err) {
+    console.log('screenshots were saved')
+  });
+    
     const materials = new Materials();
     materials.category = req.body.category;
     materials.subCategory = req.body.subCategory;
@@ -23,7 +37,7 @@ module.exports = {
     res.send("Featched all teacher !\n" + teacher);
   },
 
-  getteacherInfoByID: async (req, res) => {
+  getTeacherInfoByID: async (req, res) => {
     try {
       const teacherData = await Registration.findOne({ _id: req.params.id });
       if (teacherData) {
