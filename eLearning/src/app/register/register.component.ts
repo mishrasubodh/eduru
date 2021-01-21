@@ -10,7 +10,7 @@ import { AuthserviceService } from '../services/authservice.service'
 export class RegisterComponent implements OnInit {
 
   emailtest = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  private options: string[] = ["please select one", "teacher", "student"];
+   options: string[] = ["please select one", "teacher", "student"];
 
   register = {
     FirstName: '',

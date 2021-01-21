@@ -7,7 +7,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {NgModule} from '@angular/core';
 
-import { MatFileUploadModule } from 'angular-material-fileupload';
+// import { MatFileUploadModule } from 'angular-material-fileupload';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -50,7 +50,7 @@ import {
     A11yModule,
     CdkStepperModule,
     CdkTableModule,
-    MatFileUploadModule,
+    // MatFileUploadModule,
     CdkTreeModule,
     DragDropModule,
     MatAutocompleteModule,

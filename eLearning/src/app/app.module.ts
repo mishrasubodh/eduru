@@ -35,6 +35,9 @@ import { DashboardRevenueComponent } from './dashboard-revenue/dashboard-revenue
 import { DashboardChatComponent } from './dashboard-chat/dashboard-chat.component'
 import {HTTP_INTERCEPTORS } from '@angular/common/http'
 import {MyInterceptor} from './my-interceptor'
+import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { CoursePageComponent } from './course-page/course-page.component';
+import { TeachUsEduruComponent } from './teach-us-eduru/teach-us-eduru.component'
 // Needs to import the BrowserAnimationsModule
 
 @NgModule({
@@ -63,7 +66,10 @@ import {MyInterceptor} from './my-interceptor'
     DashboardCourseViewComponent,
     DashboardCourseEditComponent,
     DashboardRevenueComponent,
-    DashboardChatComponent
+    DashboardChatComponent,
+    CourseDetailComponent,
+    CoursePageComponent,
+    TeachUsEduruComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {GlobalService} from '../services/global.service'
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-education-course',
   templateUrl: './education-course.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EducationCourseComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    public globalService : GlobalService,
+  ) { }
 
   ngOnInit() {
   }
-
+  openCourseDetail(){
+    this.router.navigate(['course-detail']);
+    this.globalService.scrolData()
+    
+  }
 }

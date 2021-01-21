@@ -14,6 +14,9 @@ import { DashboardCourseViewComponent } from './dashboard-course-view/dashboard-
 import { DashboardCourseEditComponent } from './dashboard-course-edit/dashboard-course-edit.component'
 import { DashboardRevenueComponent } from './dashboard-revenue/dashboard-revenue.component'
 import { DashboardChatComponent } from './dashboard-chat/dashboard-chat.component'
+import { CourseDetailComponent } from './course-detail/course-detail.component'
+import { CoursePageComponent } from './course-page/course-page.component'
+import { TeachUsEduruComponent } from './teach-us-eduru/teach-us-eduru.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,6 +35,9 @@ const routes: Routes = [
   {path: 'dashboard-course-edit', component: DashboardCourseEditComponent},
   {path: 'dashboard-revenue', component: DashboardRevenueComponent},
   {path: 'dashboard-chat', component: DashboardChatComponent},
+  {path: 'course-detail', component: CourseDetailComponent},
+  {path: 'course-page', component: CoursePageComponent},
+  {path: 'teach-us-eduru' , component: TeachUsEduruComponent},
 ];
 
 @NgModule({

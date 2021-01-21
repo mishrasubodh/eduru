@@ -1,47 +1,43 @@
 const router = require("express").Router();
 
-
+console.log("coming here")
 const cat_subCat = {
   "category":[
-   {"name":"ACADEMIC","id":1},
-    {"name":"UPSKILL","id":1},
-  {"name":"PERSONAL_DEVELOPMENT","id":1}
+    {"name":"ACADEMIC","id":1},
+    {"name":"UPSKILL","id":2},
+    {"name":"PERSONAL_DEVELOPMENT","id":3}
     ] ,
-  "sub_category": 
-    {
-      "ACADEMIC": {
-        "parentId":1,
-        "subCategory":[
-        "Account",
-         "Economics", 
-          "Psycology",
-           "Mathematics",
-            "English", 
-             "Sciencs",
-              "Law",
-               "Business",
-                "ComputerScince"
+  "subCategory":[
+    {"name": "Account", "parentId":1},
+    {"name": "Economics", "parentId":1},
+    {"name": "Psycology", "parentId":1},
+    {"name": "Mathematics", "parentId":1},
+    {"name": "English", "parentId":1},
+    {"name": "Sciencs", "parentId":1},
+    {"name": "Law", "parentId":1},
+    {"name": "Business", "parentId":1},
+    {"name": "ComputerScince", "parentId":1},
+
+
+    {"name": "Data Science", "parentId":2},
+    {"name": "Digital MArketing", "parentId":2},
+    {"name": "UI/UX", "parentId":2},
+    {"name": "Web Development", "parentId":2},
+    {"name": "Graphic Designing", "parentId":2},
+    {"name": "Content Writing", "parentId":2},
+    {"name": "Photography & Video", "parentId":2},
+    {"name": "IT & Software", "parentId":2},
+    {"name": "Data Science", "parentId":2},
+    {"name": "Data Science", "parentId":2},
+
+    
+    {"name": "Public Speaking", "parentId":3},
+    {"name": "Personal Brand Development", "parentId":3},
       ]
-      },
-       "UPSKILL":{ 
-         "parentId":2,
-         "subCategory":[
-        "Data Science",
-         "Digital MArketing", 
-          "UI/UX",
-           "Web Development",
-            "Graphic Designing", 
-             "Content Writing",
-              "Photography & Video",
-               "IT & Software"
-      ]},  
-      "PERSONAL_DEVELOPMENT": {
-        "parentId":3,
-          "subCategory":[
-        "Public Speaking",
-         "Personal Brand Development"
-     ] }
-    }
+     
+         
+     
+  
 }
 
 

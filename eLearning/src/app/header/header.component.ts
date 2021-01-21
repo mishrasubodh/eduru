@@ -24,6 +24,9 @@ export class HeaderComponent implements OnInit {
   openLogin(){
     this.router.navigate(['login']);
   }
+  openteachUspage(){
+    this.router.navigate(['teach-us-eduru']);
+  }
  
 
 }

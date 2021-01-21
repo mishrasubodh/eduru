@@ -45,6 +45,10 @@ getTeacherBankDetail(data){
   console.log('data :>> ', data);
   return this.http.get(this.url+`bankDetails/getDetail/${data}`,{headers:this.httpOptions})
 }
+   
+getCategory(){
+  return this.http.get(this.url+`category_subcategory`,{headers:this.httpOptions})
+}
 
   addCoures(id){ 
     console.log('id :>> ', id);

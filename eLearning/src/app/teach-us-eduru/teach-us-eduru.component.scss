@@ -1,0 +1,81 @@
+.course-detail{
+  .course-header{
+    background: url(../../assets/img/course-detail-header.jpg)  top no-repeat;
+    padding: 10% 0;
+    position: relative;
+    background-size: cover;
+    &:before{
+      content:"";
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, .4);
+      z-index: 0;
+    }
+    .heading-top{
+      position: relative;
+      z-index: 999;
+      h1{
+        font-weight: bold;
+        color:#fff;
+        padding-left: 20px;
+        border-left: 4px solid #a070ff;
+      }
+      h4{
+        font-weight: 300;
+        color: #fff;
+        padding: 10px;
+        background: #a070ff;
+        margin: 10px 0 0 20px;
+        width: 38%;
+      }
+    }
+  }
+}
+
+
+.course-content{
+  padding:40px 0;
+  .teach-content{
+    p{
+      margin-bottom: 10px;
+    }
+    .author-section{
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #f7f7f7;
+      h3{
+        font-weight: bold;
+        color:#3d2768;
+       }
+        p{
+          font-size: 18px;
+        }
+        .author{
+          text-align: right;
+          font-size: 16px;
+        }
+      }
+   .card-detail{
+    text-align: center;
+    box-shadow: none;
+    background: #a070ff;
+    color: #fff;
+    min-height: 220px;
+    padding: 15px;
+     .icon-card{
+       width: 50px;
+     }
+     h5{
+       font-weight: bold;
+       margin: 20px 0 10px 0;
+     }
+   }
+  }
+
+}

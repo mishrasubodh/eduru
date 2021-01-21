@@ -17,6 +17,21 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+//   var isXhr = function isLoggedIn(req, res, next) {
+//   if (req.xhr) {
+    
+//     console.log("coming in if condition in server.js", req.xhr)
+//     next();
+//   } else {
+//      console.log("coming in else condition in server.js", req.xhr)
+//     res.sendFile('dist/new-website/index.html', {
+//        root: __dirname
+//     });
+//   }
+//  };
+//  app.use(isXhr);
+  
+  
 
 require("./mongo");
 require("./models/admin");
@@ -26,7 +41,7 @@ require("./models/registration");
 require("./models/bankDetails");
 require("./models/material");
 require("./models/materialsPath");
-require("./models/Category")
+//require("./models/Category")
 
 app.use("/dashboard", require("./routes/admin"));
 app.use("/dashboard", require("./routes/students"));
