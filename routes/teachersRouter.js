@@ -7,6 +7,7 @@ var checkAuth = require("../middleware/auth");
 var bodyParser = require('body-parser')
 
 const teacherController = require("../controller/teachersController");
+const vv = "changing just for commit"
 
 var storage = multer.diskStorage({
 
@@ -52,7 +53,7 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
     const materials = await new Materials
     materials.category = obj.category;
     materials.subCategory = obj.subCategory;
-    materials.teacherId = obj.teacherId;
+    materials.teacherId = req.params.teacherId;
     materials.amount = obj.amount;
     materials.description = obj.description;
     materials.videoImg = __dirname+'/public/uploads/Screenshot from 2020-12-15 19-12-32.png';
@@ -60,5 +61,7 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
     await materials.save();
     res.send(materials);
   }),
+
+  router.get("/getVideoByCategory/:category", teacherController.getVideoByCategory);
 
   module.exports = router;

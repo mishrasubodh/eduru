@@ -3,6 +3,7 @@ const Teacher = mongoose.model("Teacher");
 const Materials = mongoose.model("materialDetail");
 const Registration = mongoose.model("registration");
 var ffmpeg = require('ffmpeg');
+var exec = require('exec');
 
 module.exports = {
   saveScreenShotsOfVideo: async (req, res) => {
@@ -11,44 +12,46 @@ module.exports = {
     const firstVideo = videosOffirstObject[0].videoPath[0];
     console.log('videoPathvideoPathvideoPathvideoPath >>>>>>>>>>>>>>>>>>>>>>>>>:>>', firstVideo)
     //---------------take screenshot of video------------------------
-   
-    try {
-      var process = new ffmpeg(firstVideo);
-      process.then(function (video) {
-        console.log('videovideovideovideo---------------------------------------- :>>', video)
-          // Callback mode
-          const filenamee ='/media/shipgig/ea00d876-fb89-43b6-bd2c-785b91adbec4/Anand/eduru/routes/public/uploads/test'
-          const filename = ["anand","bhardwaj"]
-          console.log('object --------------------------:>>', __dirname)
-          video.fnExtractFrameToJPG(filenamee, {
+  //   exec("ffmpeg -i Video/" + firstVideo  + " -ss 01:30 -r 1 -an -vframes 1 -f mjpeg Video/" + firstVideo  + ".jpg", function(err){
+  //     socket.emit('Done', {'Image' : 'Video/' + firstVideo + '.jpg'});
+  // });
+  //   try {
+  //     var process = new ffmpeg(firstVideo);
+  //     process.then(function (video) {
+  //       console.log('videovideovideovideo---------------------------------------- :>>', video)
+  //         // Callback mode
+  //         const filenamee ='/media/shipgig/ea00d876-fb89-43b6-bd2c-785b91adbec4/Anand/eduru/routes/public/uploads/test'
+  //         const filename = ["anand","bhardwaj"]
+  //         console.log('object --------------------------:>>', __dirname)
+  //         video.fnExtractFrameToJPG(filenamee, {
            
-              frame_rate: 1,
-              number: 50,
-              keep_pixel_aspect_ratio : true,
-              keep_aspect_ratio: true,
-              file_name : filename[0]+'_%s'
-          }, function (error,files){
+  //             frame_rate: 1,
+  //             number: 50,
+  //             keep_pixel_aspect_ratio : true,
+  //             keep_aspect_ratio: true,
+  //             file_name : filename[0]+'_%s'
+  //         }, function (error,files){
   
-              if(!error)
-                  {   
+  //             if(!error)
+  //                 {   
 
-                      var fileJsonStr = JSON.stringify(files);
-  console.log('fileJsonStrfileJsonStrfileJsonStrfileJsonStrfileJsonStr :>>', fileJsonStr)
-                      makeZip(zipdest,__dirname+filename[0]+'.zip');
+  //                     var fileJsonStr = JSON.stringify(files);
+  // console.log('fileJsonStrfileJsonStrfileJsonStrfileJsonStrfileJsonStr :>>', fileJsonStr)
+  //                     makeZip(zipdest,__dirname+filename[0]+'.zip');
   
-                      console.log(res);
+  //                     console.log(res);
   
-                      res.send(fileJsonStr).responseJSON;
-                  }
-          });
-      }, function (err) {
-           console.log('Error: ' + err);
-      });
-    }
-    catch (e) {
-      console.log(e.code);
-      console.log(e.msg);
-  }
+  //                     res.send(fileJsonStr).responseJSON;
+  //                 }
+  //         });
+  //     }, function (err) {
+  //          console.log('Error: ' + err);
+  //     });
+  //   }
+  //   catch (e) {
+  //     console.log(e.code);
+  //     console.log(e.msg);
+  // }
    
     
 
@@ -120,5 +123,11 @@ module.exports = {
       _id: req.params.teacherId,
     });
     res.send("Deleted following teacher !\n" + teacher);
+  },
+
+
+  getVideoByCategory: async (req, res) => {
+    const Videos = await Materials.find({ category: req.params.category });
+    res.send(Videos);
   },
 }
