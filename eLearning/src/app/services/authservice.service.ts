@@ -7,8 +7,8 @@ import { HttpClient,HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthserviceService {
-url="http://localhost:3300/dashboard/"
- 
+url="http://192.168.1.154:3300/dashboard/"
+//http://192.168.1.154:3300/dashboard/5ffff461509d96372a41a5d4/UploadFile
  token = localStorage.getItem('token')
 
  httpOptions =  new HttpHeaders({
@@ -50,9 +50,13 @@ getCategory(){
   return this.http.get(this.url+`category_subcategory`,{headers:this.httpOptions})
 }
 
-  addCoures(id){ 
-    console.log('id :>> ', id);
-    // return this.http.post(this.url+`teacherInfobyID/${id}`,this.options)
+  addCoures(id,data){ 
+    console.log('id :>> ', data);
+     return this.http.post(this.url+`${id}/UploadFile`,data,{headers:this.httpOptions})
+
+    // http://192.168.1.154:3300/dashboard/5ffff461509d96372a41a5d4/UploadFile
+
+   // http://localhost:3300/dashboard/5ffc337c8001fe195083e022/UploadFile
   }
  // {queryParams: { teacherId: id}}/,
 }

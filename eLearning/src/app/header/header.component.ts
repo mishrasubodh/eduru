@@ -29,4 +29,9 @@ export class HeaderComponent implements OnInit {
   }
  
 
+  goCoursePage(){
+    this.router.navigate(['course-page']);
+  }
+  
+
 }

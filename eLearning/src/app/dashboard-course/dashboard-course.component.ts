@@ -1,71 +1,127 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { MatButtonModule } from '@angular/material';
-import { AuthserviceService } from '../services/authservice.service'
+import { MatButtonModule } from "@angular/material";
+import { AuthserviceService } from "../services/authservice.service";
+import { PopupService } from "../services/popup.service";
 // import { MatFileUploadModule } from 'angular-material-fileupload';
 @Component({
-  selector: 'app-dashboard-course',
-  templateUrl: './dashboard-course.component.html',
-  styleUrls: ['./dashboard-course.component.scss']
+  selector: "app-dashboard-course",
+  templateUrl: "./dashboard-course.component.html",
+  styleUrls: ["./dashboard-course.component.scss"],
 })
 export class DashboardCourseComponent implements OnInit {
   myFiles: string[] = [];
-  sMsg: string = '';
-  category = []
-  subCategory = []
-  selectSubCat = []
+  imgFiles: string[] = [];
+  sMsg: string = "";
+  teacherID;
+  category = [];
+  subCategory = [];
+  selectSubCat = [];
   course = {
-    name: '',
-    category: '',
-    SubCategory: '',
-    amount: '',
-    description: '',
-    videoUrl: ''
-  }
+    name: "",
+    category: "",
+    SubCategory: "",
+    amount: "",
+    description: "",
+    videoUrl: "",
+  };
   constructor(
     private router: Router,
-    public services: AuthserviceService
-  ) { }
+    public services: AuthserviceService,
+    public msgService: PopupService
+  ) {
+    this.teacherID = localStorage.getItem("teacherID");
+  }
 
   ngOnInit() {
-    this.categoryes()
+    this.categoryes();
   }
   openDashboardCourseView() {
-    this.router.navigate(['dashboard-course-view']);
+    this.router.navigate(["dashboard-course-view"]);
   }
   async SelectCat(selectCat) {
     this.course.category = selectCat.name;
-    this.selectSubCat = this.subCategory.filter(o => o.parentId == selectCat.id)
+    this.selectSubCat = this.subCategory.filter(
+      (o) => o.parentId == selectCat.id
+    );
   }
   SelectSubCat(subCat) {
     this.course.SubCategory = subCat.name;
   }
   categoryes() {
-    this.services.getCategory().subscribe(data => {
-      console.log('data :>> ', data);
+    this.services.getCategory().subscribe((data) => {
+      console.log("data :>> ", data);
       if (data != null || data != undefined) {
-        this.category = data['category']
-        this.subCategory = data['subCategory']
+        this.category = data["category"];
+        this.subCategory = data["subCategory"];
       }
-    })
+    });
+  }
+  frmData = new FormData();
+  getimgFileDetails(e) {
+    this.imgFiles.push(e.target.files[0]);
+   // this.frmData.append("fileUpload", e.target.files[0]);
+   // console.log("this.imgFilesthis.imgFiles :>> ", this.imgFiles);
   }
   getFileDetails(e) {
-    //console.log (e.target.files);
-    for (var i = 0; i < e.target.files.length; i++) {
-      this.myFiles.push(e.target.files[i]);
-    }
-    console.log("files ", this.myFiles)
+    console.log('object :>> ', e.target.files[0]);
+    this.myFiles.push(e.target.files[0]);
+    this.frmData.append("material",e.target.files[0]);
   }
 
-  uploadFiles() {
-    const frmData = new FormData();
-    for (var i = 0; i < this.myFiles.length; i++) {
-      frmData.append("fileUpload", this.myFiles[i]);
-    }
+  submit(courseData) {
+    try {
+      // if (courseData.category == "") {
+      //   this.msgService.openSnackBar("please enter category", false);
+      //   return;
+      // }
+      // if (courseData.SubCategory == "") {
+      //   this.msgService.openSnackBar("please enter SubCategory", false);
+      //   return;
+      // }
+      // if (courseData.description == "") {
+      //   this.msgService.openSnackBar("please enter description", false);
+      //   return;
+      // }
+      // if (courseData.name == "") {
+      //   this.msgService.openSnackBar("please enter courseName", false);
+      //   return;
+      // }
 
-    console.log('frmData :>> ', frmData);
-  }
-  submit(userData) {
-    console.log('userdata :>> ', userData);
+      // if (courseData.amount == "") {
+      //   this.msgService.openSnackBar("please  enter amount", false);
+      //   return;
+      // }
+      // if (this.myFiles.length <= 0) {
+      //   this.msgService.openSnackBar("please  please add video", false);
+      //   return;
+      // }
+      // if (this.imgFiles.length <= 0) {
+      //   this.msgService.openSnackBar(
+      //     "please select termandcondition & condition",
+      //     false
+      //   );
+      //   return;
+      // }
+      this.frmData.append("category", courseData.category);
+      this.frmData.append("subCategory", courseData.SubCategory);
+      this.frmData.append("description",courseData.description);
+      this.frmData.append("name",courseData.name);
+      this.frmData.append("amount",courseData.amount); 
+      this.frmData.append("teacherId",this.teacherID);
+      console.log(' this.frmData this.frmData :>> ',  this.frmData);
+      this.services.addCoures(this.teacherID,this.frmData).subscribe((data) => {
+           console.log("data :", data);
+          if (data["message"] == "Success") {
+          this.msgService.openSnackBar("course added successful", true);
+          this.router.navigate(["login"]);
+          } else {
+          this.msgService.openSnackBar(data["message"], false);
+          return;
+        }
+      });
+    } catch (err) {
+      console.log("err :>> ", err.message);
+    }
   }
 }

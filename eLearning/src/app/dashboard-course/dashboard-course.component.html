@@ -107,20 +107,37 @@
                     <input type="number" [(ngModel)]="course.amount" matInput>
                   </mat-form-field>
                 </div>
+                
+                <!-- <div class="col-md-4">
+
+                  <mat-label>Upload Thumbnail</mat-label><br>
+                  <div>
+                    <ng-container>
+                      <input type="file" id="file" multiple (change)="getimgFileDetails($event)">
+
+                      <button mat-raised-button color="primary" (click)="uploadFiles()">Upload</button> 
+                    </ng-container>
+                  </div>
+             <pre>{{myFiles | json}}</pre> 
+                  <div *ngFor="let file of imgFiles">
+                    <div>* {{file.name}} - {{file.type}} - {{file.size}}</div>
+                  </div>
+
+                </div> -->
                 <div class="col-md-12">
                   <mat-form-field>
                     <mat-label>Course Description</mat-label>
                     <textarea matInput [(ngModel)]="course.description"></textarea>
                   </mat-form-field>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
 
                   <mat-label>Upload Video</mat-label><br>
                   <div>
                     <ng-container>
                       <input type="file" id="file" multiple (change)="getFileDetails($event)">
 
-                      <button mat-raised-button color="primary" (click)="uploadFiles()">Upload</button>
+                      <!-- <button mat-raised-button color="primary" (click)="uploadFiles()">Upload</button> -->
                     </ng-container>
                   </div>
                   <!-- <pre>{{myFiles | json}}</pre> -->
@@ -128,12 +145,10 @@
                     <div>* {{file.name}} - {{file.type}} - {{file.size}}</div>
                   </div>
 
-
                 </div>
                 <div class="col-md-12">
                   <button mat-raised-button color="primary" (click)="submit(course)">Save</button>
                 </div>
-
               </div>
             </div>
           </div>

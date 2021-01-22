@@ -4,13 +4,17 @@ require("express-async-errors");
 const app = express();
 const path = require('path');
 const expressEjsLayout = require("express-ejs-layouts");
-const bodyParser = require("body-parser");
+var bodyParser = require('body-parser');
+// app.use(bodyParser.json({limit: '550mb'}));
+// app.use(bodyParser.urlencoded({limit: '550mb', extended: true}));
 const morgan = require("morgan");
 var cors = require('cors')
 app.use(cors())
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.json({limit: '1500mb'}));
+// app.use(express.urlencoded({limit: '150mb'}));
+// app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist/new-website')));
-app.use(bodyParser.json()).use(morgan());
+app.use(bodyParser.json()).use(morgan({limit: '1500mb'}));
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); 
     res.header("Access-Control-Allow-Methods","GET,PUT,POST,DELETE");
