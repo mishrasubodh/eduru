@@ -4,28 +4,38 @@ require("express-async-errors");
 const app = express();
 const path = require('path');
 const expressEjsLayout = require("express-ejs-layouts");
-var bodyParser = require('body-parser');
-// app.use(bodyParser.json({limit: '550mb'}));
-// app.use(bodyParser.urlencoded({limit: '550mb', extended: true}));
-const morgan = require("morgan");
 var cors = require('cors')
-app.use(cors())  
+app.use(cors())
+const morgan = require("morgan");
+var bodyParser = require('body-parser');
 
 
-// app.use(express.json({limit: '1500mb'}));
-// app.use(express.urlencoded({limit: '150mb'}));
-// app.use(express.urlencoded({ extended: false }));
+
+app.use(bodyParser.urlencoded({
+  limit: "50mb",
+  extended: false
+}));
+app.use(bodyParser.json({limit: "50mb"}));
+// app.use(bodyParser.json()).use(morgan({
+//   limit: '1500mb'
+// }));
+// app.use(bodyParser.urlencoded({
+//   limit: "1500mb",
+//   extended: true,
+//   parameterLimit: 50000
+// }))
+
 app.use(express.static(path.join(__dirname, 'dist/new-website')));
-app.use(bodyParser.json()).use(morgan({limit: '1500mb'}));
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); 
-    res.header("Access-Control-Allow-Methods","GET,PUT,POST,DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 //   var isXhr = function isLoggedIn(req, res, next) {
 //   if (req.xhr) {
-    
+
 //     console.log("coming in if condition in server.js", req.xhr)
 //     next();
 //   } else {
@@ -36,8 +46,8 @@ app.use(function(req, res, next) {
 //   }
 //  };
 //  app.use(isXhr);
-  
-  
+
+
 
 require("./mongo");
 require("./models/adminModel");
@@ -80,7 +90,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-const PORT =3300;
+const PORT = 3300;
 app.listen(PORT, () =>
   console.log(`..........................server connect on port ${PORT}`)
 );

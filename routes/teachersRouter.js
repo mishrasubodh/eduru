@@ -4,13 +4,10 @@ var multer = require('multer');
 const Materials = mongoose.model("materialDetail");
 var path = require('path');
 var checkAuth = require("../middleware/auth");
-var bodyParser = require('body-parser')
 
 const teacherController = require("../controller/teachersController");
-const vv = "changing just for commit"
 
 var storage = multer.diskStorage({
-
   destination: function (req, file, cb) {
     cb(null, __dirname + '/public/uploads')
   },
@@ -44,6 +41,9 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
 
 
   router.post('/:teacherId/UploadFile', upload.array('material', 50), async (req, res, next) => {
+if(res){
+  console.log('resresresresresresresresresresresresresresres :>> ', res);
+    console.log(' JSON.parse(JSON.stringify(req.body) on material ',  JSON.parse(JSON.stringify(req.body)));
     const obj = JSON.parse(JSON.stringify(req.body));
     const filePathArray = [];
     for (var i = 0; i < req.files.length; i++) {
@@ -60,6 +60,7 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
     materials.videoPath = filePathArray;
     await materials.save();
     res.send(materials);
+  }
   }),
 
   router.get("/getVideoByCategory/:category", teacherController.getVideoByCategory);

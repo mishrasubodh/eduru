@@ -7,7 +7,7 @@ import { HttpClient,HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthserviceService {
-url="http://192.168.1.154:3300/dashboard/"
+url="http://localhost:3300/dashboard/"
 //http://192.168.1.154:3300/dashboard/5ffff461509d96372a41a5d4/UploadFile
  token = localStorage.getItem('token')
 

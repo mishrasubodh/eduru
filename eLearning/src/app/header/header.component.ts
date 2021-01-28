@@ -13,18 +13,28 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+  addActiveClass(){
+    document.getElementById("asideID").classList.add("active");
+  }
+
+  removeActiveClass(){
+    document.getElementById("asideID").classList.remove("active");
+  }
 
   openAboutUS(){
     console.log('working');
     this.router.navigate(['abouthome']);
+    this.removeActiveClass()
   }
   openHome(){
     this.router.navigate(['home']);
   }
   openLogin(){
+    this.removeActiveClass()
     this.router.navigate(['login']);
   }
   openteachUspage(){
+    this.removeActiveClass()
     this.router.navigate(['teach-us-eduru']);
   }
  

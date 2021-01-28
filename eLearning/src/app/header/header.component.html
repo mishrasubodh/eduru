@@ -9,7 +9,7 @@
 
     <aside class="nav-container">
       <div class="nav">
-        <div class="navbox">
+        <div id="asideID" class="navbox">
           <ul>
             <li>
               <div class="input-group">
@@ -65,12 +65,12 @@
 
             <li><a title="" class="sign-in" (click)="openLogin()">Sign in</a></li>
           </ul>
-          <button class="action close" title="Close Menu">
+          <button class="action close" title="Close Menu" (click)="removeActiveClass()">
             <i class="fas fa-times"></i>
             <span></span>
           </button>
         </div>
-        <button class="action toggle" title="Open Menu">
+        <button  class="action toggle" title="Open Menu" (click)="addActiveClass()">
           <i class="fas fa-bars"></i>
           <span></span>
         </button>
