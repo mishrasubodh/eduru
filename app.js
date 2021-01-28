@@ -5,18 +5,25 @@ const app = express();
 const path = require('path');
 const expressEjsLayout = require("express-ejs-layouts");
 var bodyParser = require('body-parser');
-// app.use(bodyParser.json({limit: '550mb'}));
-// app.use(bodyParser.urlencoded({limit: '550mb', extended: true}));
 const morgan = require("morgan");
 var cors = require('cors')
-app.use(cors())  
+app.use(cors())      
+ //app.use(bodyParser.json({})); 
+// app.use(bodyParser.urlencoded({}));
+// app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 
+ app.use.bodyParser = {
+  json: {limit: '50000mb', extended: true},
+  urlencoded: {limit: '50000mb', extended: true}
+};
 
-// app.use(express.json({limit: '1500mb'}));
-// app.use(express.urlencoded({limit: '150mb'}));
+// app.use(bodyParser.json({limit: '550mb'}));
+// app.use(bodyParser.urlencoded({limit: '550mb', extended: true}));
+ //app.use(express.json());
+ //app.use(express.urlencoded());
 // app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist/new-website')));
-app.use(bodyParser.json()).use(morgan({limit: '1500mb'}));
+ app.use(bodyParser.json()).use(morgan());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); 
     res.header("Access-Control-Allow-Methods","GET,PUT,POST,DELETE");

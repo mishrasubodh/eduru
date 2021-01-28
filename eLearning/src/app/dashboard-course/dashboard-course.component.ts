@@ -10,7 +10,7 @@ import { PopupService } from "../services/popup.service";
   styleUrls: ["./dashboard-course.component.scss"],
 })
 export class DashboardCourseComponent implements OnInit {
-  myFiles: string[] = [];
+  myFiles : string[] = [];
   imgFiles: string[] = [];
   sMsg: string = "";
   teacherID;
@@ -59,14 +59,16 @@ export class DashboardCourseComponent implements OnInit {
   }
   frmData = new FormData();
   getimgFileDetails(e) {
-    this.imgFiles.push(e.target.files[0]);
+   //. this.imgFiles.push(e.target.files[0]);
    // this.frmData.append("fileUpload", e.target.files[0]);
    // console.log("this.imgFilesthis.imgFiles :>> ", this.imgFiles);
   }
   getFileDetails(e) {
     console.log('object :>> ', e.target.files[0]);
     this.myFiles.push(e.target.files[0]);
-    this.frmData.append("material",e.target.files[0]);
+    console.log('object :>>', this.myFiles)
+   // this.frmData.append("material",e.target.files[0]);
+   return this.myFiles
   }
 
   submit(courseData) {
@@ -103,13 +105,20 @@ export class DashboardCourseComponent implements OnInit {
       //   );
       //   return;
       // }
+      
+      //this.frmData.append("material", this.myFiles);
       this.frmData.append("category", courseData.category);
       this.frmData.append("subCategory", courseData.SubCategory);
       this.frmData.append("description",courseData.description);
       this.frmData.append("name",courseData.name);
       this.frmData.append("amount",courseData.amount); 
       this.frmData.append("teacherId",this.teacherID);
-      console.log(' this.frmData this.frmData :>> ',  this.frmData);
+      
+      //console.warn(' this.frmData this.frmData :>> ',  this.frmData);
+     // console.log('this.frmData :>> >>>>>>>>>>>>>>>>>>>>>>>',  this.frmData);
+      for (var value of this.frmData['values']()) {
+        console.log("dddddddddddd",value);
+     }
       this.services.addCoures(this.teacherID,this.frmData).subscribe((data) => {
            console.log("data :", data);
           if (data["message"] == "Success") {

@@ -44,7 +44,18 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
 
 
   router.post('/:teacherId/UploadFile', upload.array('material', 50), async (req, res, next) => {
-    const obj = JSON.parse(JSON.stringify(req.body));
+    // if(res){
+    //   console.log('req.filesreq.filesreq.filesreq.filesreq.filesreq.filesreq.files  48:>>',JSON.stringify( req))
+    // }
+    console.log('coming in...........................................uploader')
+    console.log('req.filesreq.filesreq.filesreq.filesreq.filesreq.filesreq.files  48:>>',req)
+    
+    //console.log('req................................... :>>', req)
+    //console.log('reqreqreqreqreqreqreqreq :>>', req.body)
+     //const obj = JSON.parse(JSON.stringify(req.body));
+   // const obj = JSON.stringify(req.body);
+    //console.log('objobjobjobjobjobjobjobjobjobj :>>', obj)
+    console.log('req.filesreq.filesreq.filesreq.filesreq.filesreq.filesreq.files 56:>>',JSON.stringify( req))
     const filePathArray = [];
     for (var i = 0; i < req.files.length; i++) {
       var filePath = req.files[i].path;
