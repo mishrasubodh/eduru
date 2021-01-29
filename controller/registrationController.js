@@ -6,6 +6,7 @@ const bcryptp = require('../utility/password')
 
 
 exports.Registration = async (req, res, next) => {
+  console.log("coming herefffffffffffffffffffff",req.body)
   try {
     let obj={
       FirstName:req.body.FirstName,

@@ -59,18 +59,28 @@ export class DashboardCourseComponent implements OnInit {
   }
   frmData = new FormData();
   getimgFileDetails(e) {
-    this.imgFiles.push(e.target.files[0]);
+   //. this.imgFiles.push(e.target.files[0]);
    // this.frmData.append("fileUpload", e.target.files[0]);
    // console.log("this.imgFilesthis.imgFiles :>> ", this.imgFiles);
   }
   getFileDetails(e) {
-    console.log('object :>> ', e.target.files[0]);
-    this.myFiles.push(e.target.files[0]);
-    this.frmData.append("material",e.target.files[0]);
+    for (var i = 0; i < e.target.files.length; i++) { 
+      this.myFiles.push(e.target.files[i]);
+    }
+    console.log(this.myFiles)
   }
-
+  uploadFiles () {
+    for (var i = 0; i < this.myFiles.length; i++) { 
+      this.frmData.append("material", this.myFiles[i]);
+    }
+  }
   submit(courseData) {
     try {
+   if(!this.frmData.has("material")){
+    this.msgService.openSnackBar("please upload video First", false);
+        return;
+   }else{
+
       // if (courseData.category == "") {
       //   this.msgService.openSnackBar("please enter category", false);
       //   return;
@@ -103,13 +113,15 @@ export class DashboardCourseComponent implements OnInit {
       //   );
       //   return;
       // }
+      
+    //  this.frmData.append("material", this.myFiles);
       this.frmData.append("category", courseData.category);
       this.frmData.append("subCategory", courseData.SubCategory);
       this.frmData.append("description",courseData.description);
       this.frmData.append("name",courseData.name);
       this.frmData.append("amount",courseData.amount); 
       this.frmData.append("teacherId",this.teacherID);
-      console.log(' this.frmData this.frmData :>> ',  this.frmData);
+
       this.services.addCoures(this.teacherID,this.frmData).subscribe((data) => {
            console.log("data :", data);
           if (data["message"] == "Success") {
@@ -120,6 +132,7 @@ export class DashboardCourseComponent implements OnInit {
           return;
         }
       });
+    }
     } catch (err) {
       console.log("err :>> ", err.message);
     }
