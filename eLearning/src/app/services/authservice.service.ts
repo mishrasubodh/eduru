@@ -26,7 +26,7 @@ url="http://localhost:3300/dashboard/"
   }
 
   updateTeacher(Teacher){
-    console.log('Teacher :', Teacher)
+  
     return this.http.post(this.url+`registration/upDateTeacher`,Teacher,{headers:this.httpOptions})
   }
 
@@ -42,7 +42,7 @@ addTeacherBandDetail(data){
 }
 
 getTeacherBankDetail(data){
-  console.log('data :>> ', data);
+ 
   return this.http.get(this.url+`bankDetails/getDetail/${data}`,{headers:this.httpOptions})
 }
    
@@ -51,7 +51,7 @@ getCategory(){
 }
 
   addCoures(id,data){ 
-    console.log('id :>> ', data);
+    
      return this.http.post(this.url+`${id}/UploadFile`,data,{headers:this.httpOptions})
 
     // http://192.168.1.154:3300/dashboard/5ffff461509d96372a41a5d4/UploadFile
