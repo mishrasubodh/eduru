@@ -5,6 +5,8 @@ const registrationController = require("../controller/registrationController");
 
 router.post("/registration", registrationController.Registration);
 
-//router.post("/registration/upDateTeacher", registrationController.upDateTeacher);
+router.post("/registration/sendOtp/:otpEmail", registrationController.sendOtp);
+router.post("/registration/vareyfyOtp/:otpNumber", registrationController.varifyOtp);
+router.post("/registration/upDateTeacher", registrationController.upDateTeacher);
 module.exports = router;
 

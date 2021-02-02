@@ -22,7 +22,18 @@ url="http://localhost:3300/dashboard/"
   ) { }
 
   registration(urseData){
+    console.log('urseData on registration api:>> ', urseData);
     return this.http.post(this.url+`registration`,urseData,{headers:this.httpOptions})
+  }
+
+  sendOtp(urseData){
+    console.log('urseData  in sent otp api:>> ', urseData);
+    return this.http.post(this.url+`registration/sendOtp/${urseData}`,{headers:this.httpOptions})
+  }
+
+  varifyOtp(urseData){
+    console.log('urseData  in sent otp varify api:>> ', urseData);
+    return this.http.post(this.url+`registration/vareyfyOtp/${urseData}`,{headers:this.httpOptions})
   }
 
   updateTeacher(Teacher){
@@ -51,7 +62,6 @@ getCategory(){
 }
 
   addCoures(id,data){ 
-    
      return this.http.post(this.url+`${id}/UploadFile`,data,{headers:this.httpOptions})
 
     // http://192.168.1.154:3300/dashboard/5ffff461509d96372a41a5d4/UploadFile

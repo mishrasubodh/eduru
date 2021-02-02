@@ -37,7 +37,8 @@ import {HTTP_INTERCEPTORS } from '@angular/common/http'
 import {MyInterceptor} from './my-interceptor'
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { CoursePageComponent } from './course-page/course-page.component';
-import { TeachUsEduruComponent } from './teach-us-eduru/teach-us-eduru.component'
+import { TeachUsEduruComponent } from './teach-us-eduru/teach-us-eduru.component';
+import { VerifyOtpComponent } from './verify-otp/verify-otp.component'
 // Needs to import the BrowserAnimationsModule
 
 @NgModule({
@@ -69,7 +70,8 @@ import { TeachUsEduruComponent } from './teach-us-eduru/teach-us-eduru.component
     DashboardChatComponent,
     CourseDetailComponent,
     CoursePageComponent,
-    TeachUsEduruComponent
+    TeachUsEduruComponent,
+    VerifyOtpComponent
   ],
   imports: [
     BrowserModule,

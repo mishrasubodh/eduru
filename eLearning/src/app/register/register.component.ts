@@ -36,8 +36,9 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  submit(registerData) { 
+ async submit(registerData) { 
     try {
+      
       if (registerData.FirstName == "") {
         this.msgService.openSnackBar('please enter first name', false)
         return;
@@ -74,26 +75,47 @@ export class RegisterComponent implements OnInit {
         this.msgService.openSnackBar('please select termandcondition & condition', false)
         return;
       }
-      registerData['user_name'] = registerData.email
-
-      this.authservice.registration(registerData).subscribe(data => {
-        console.log('data :', data)
-        if (data['message'] == 'Success'){
-
-          this.msgService.openSnackBar('registration successful', true)
-        this.router.navigate(['login']);
-        }
-        else{
-          this.msgService.openSnackBar(data['message'], false)
-          return
-        }
-      })
+      // registerData["user_name"] = registerData.email;
+      //   console.log('userdata userdata  :>> ', registerData);
+      //   this.authservice.registration(registerData).subscribe(
+      //     (data) => {
+      //       if (data["message"] == "Success") {
+      //         console.log('data on res :>> ', data);
+      //         this.msgService.openSnackBar("registration Successfull", true);
+      //       //  this.router.navigate(['dashboard',]);
+      //       }
+      //     },
+      //     (err) => {
+      //       this.msgService.openSnackBar("data not registered", false);
+      //     }
+      //   );
       
+
+
+
+       let otpDetail= await this.sendOtpData(registerData.email)
+       console.log('otpDetai otpDetai :>> ', otpDetail);
+      if(otpDetail=='Otp Send Successfully'){
+         this.router.navigate(['otp',JSON.stringify(registerData)]);
+      }
     } catch (err) {
       console.log('err :>> ', err.message);
     }
 
   }
+
+ sendOtpData(email){
+    return  new Promise((resolve, reject) => {
+    this.authservice.sendOtp(email).subscribe(data => {
+      if(data['message']=='Otp Send Successfully')
+      this.msgService.openSnackBar('Otp Send Successfully', true)
+      resolve(data['message'])
+    },(err) =>{
+      reject('otp not send')
+      this.msgService.openSnackBar('otp not send', false)
+    })
+  })
+}
 
 
 

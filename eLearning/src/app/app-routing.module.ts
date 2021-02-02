@@ -17,6 +17,7 @@ import { DashboardChatComponent } from './dashboard-chat/dashboard-chat.componen
 import { CourseDetailComponent } from './course-detail/course-detail.component'
 import { CoursePageComponent } from './course-page/course-page.component'
 import { TeachUsEduruComponent } from './teach-us-eduru/teach-us-eduru.component'
+import {VerifyOtpComponent} from './verify-otp/verify-otp.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'course-detail', component: CourseDetailComponent},
   {path: 'course-page', component: CoursePageComponent},
   {path: 'teach-us-eduru' , component: TeachUsEduruComponent},
+  {path: 'otp/:data' , component: VerifyOtpComponent},
 ];
 
 @NgModule({
