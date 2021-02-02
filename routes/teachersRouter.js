@@ -41,35 +41,32 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
 
 
   router.post('/:teacherId/UploadFile', upload.array('material', 50), async (req, res, next) => {
-    // if(res){
-    //   console.log('req.filesreq.filesreq.filesreq.filesreq.filesreq.filesreq.files  48:>>',JSON.stringify( req))
-    // }
-    console.log('coming in...........................................uploader')
-    console.log('req.filesreq.filesreq.filesreq.filesreq.filesreq.filesreq.files  48:>>',req)
-    
-    //console.log('req................................... :>>', req)
-    //console.log('reqreqreqreqreqreqreqreq :>>', req.body)
-     //const obj = JSON.parse(JSON.stringify(req.body));
-   // const obj = JSON.stringify(req.body);
-    //console.log('objobjobjobjobjobjobjobjobjobj :>>', obj)
-    console.log('req.filesreq.filesreq.filesreq.filesreq.filesreq.filesreq.files 56:>>',JSON.stringify( req))
+   console.log('coming in UploadFile>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> :>>', req.files)
     const filePathArray = [];
     for (var i = 0; i < req.files.length; i++) {
       var filePath = req.files[i].path;
       filePathArray.push(filePath);
     }
-    const materials = await new Materials
+    res.send(filePathArray);
+  
+  }),
+  router.post('/:teacherId/SaveFileWithDetail', async (req, res, next) => {
+    console.log('coming in  SaveFileWithDetail>>>>>>>>>>>>>>>>>>>:>>', req.body)
+    const obj = JSON.parse(JSON.stringify(req.body));
+   const materials = await new Materials
     materials.category = obj.category;
     materials.subCategory = obj.subCategory;
     materials.teacherId = req.params.teacherId;
     materials.amount = obj.amount;
     materials.description = obj.description;
     materials.videoImg = __dirname+'/public/uploads/Screenshot from 2020-12-15 19-12-32.png';
-    materials.videoPath = filePathArray;
+    materials.videoPath = obj.videoPath;
     await materials.save();
     res.send(materials);
-  
   }),
+
+
+
 
   router.get("/getVideoByCategory/:category", teacherController.getVideoByCategory);
 
