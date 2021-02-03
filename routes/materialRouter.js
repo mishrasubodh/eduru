@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const materialController = require("../controller/materialController");
 console.log("coming here")
 const cat_subCat = {
   "category":[
@@ -43,5 +44,12 @@ const cat_subCat = {
 router.get('/category_subcategory', async (req, res, next) => {
   res.send(cat_subCat);
   }),
+
+  router.get('/material-byCategory/:categoryType', materialController.getMaterialByCategory);
+  router.get('/material-bySubCategory/:subcategoryType', materialController.getMaterialBySubCategory);
+  router.get('/material-byTeacherId/:teacherId', materialController.getMaterialByTeacherId);
+
+  
+
 
   module.exports = router;
