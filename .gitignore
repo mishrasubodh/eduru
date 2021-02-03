@@ -6,7 +6,7 @@
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
-
+/routes/public/uploads
 # dependencies
 /node_modules
 /eLearning/node_modules

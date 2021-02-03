@@ -49,7 +49,7 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
       filePathArray.push(filePath);
     }
     res.send(filePathArray);
-  
+   // return res.status(200).json({ success: false, message: "success", data:materials });
   }),
   router.post('/:teacherId/SaveFileWithDetail', async (req, res, next) => {
     console.log('coming in  SaveFileWithDetail>>>>>>>>>>>>>>>>>>>:>>', req.body)
@@ -64,7 +64,8 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
     materials.videoImg = __dirname+'/public/uploads/Screenshot from 2020-12-15 19-12-32.png';
     materials.videoPath = obj.videoPath;
     await materials.save();
-    res.send(materials);
+    return res.status(200).json({ success: false, message: "success", data:materials });
+    // res.send(materials);
   }),
 
 

@@ -39,7 +39,7 @@
             <div class="col-md-6">
                 <mat-form-field>
                   <mat-label>E-mail ID</mat-label>
-                  <input [(ngModel)]="user.Email" [disabled]="!checked" matInput>
+                  <input [(ngModel)]="user.Email" readonly matInput (click)="clickOnEmail()">
                 </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -79,7 +79,7 @@
             <a (click)="openbaankdetail()" >+ Edit</a>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="bakInfo">
               <div class="col-md-6">
                   <mat-form-field>
                     <mat-label>First Name</mat-label>

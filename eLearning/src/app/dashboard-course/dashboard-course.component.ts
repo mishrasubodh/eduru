@@ -13,6 +13,7 @@ export class DashboardCourseComponent implements OnInit {
   myFiles: string[] = [];
   imgFiles: string[] = [];
   videoPath:[]
+  enableSaveBtn:boolean=false
   sMsg: string = "";
   teacherID;
   category = [];
@@ -84,6 +85,7 @@ export class DashboardCourseComponent implements OnInit {
             console.log("data :", data.length);
             if (data.length>0) {
               this.videoPath=data
+              this.enableSaveBtn=true;
               this.msgService.openSnackBar("video uploaded successful", true);
               // data.forEach(el=>{
               // this.videoPath.push(el)
@@ -92,7 +94,7 @@ export class DashboardCourseComponent implements OnInit {
              // this.router.navigate(["login"]);
             } else {
            
-              
+              this.enableSaveBtn=false;
             }
           });
       }
@@ -140,13 +142,16 @@ export class DashboardCourseComponent implements OnInit {
           .addCoures(this.teacherID,courseData)
           .subscribe((data) => {
             console.log("data :", data);
-            if (data["message"] == "Success") {
+            if (data["message"] == "success") {
               this.msgService.openSnackBar("course added successful", true);
-              this.router.navigate(["login"]);
+             // this.router.navigate(["login"]);
             } else {
-              this.msgService.openSnackBar(data["message"], false);
-              return;
+              // this.msgService.openSnackBar(data["message"], false);
+              // return;
             }
+          },err=>{
+            this.msgService.openSnackBar("course not added ", false);
+               return;
           });
       
     } catch (err) {

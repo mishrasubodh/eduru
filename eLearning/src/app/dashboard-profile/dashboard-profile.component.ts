@@ -99,7 +99,8 @@ export class DashboardProfileComponent implements OnInit {
 
   getTeacherBankInfo(id) {
     this.authService.getTeacherBankDetail(id).subscribe((data) => {
-      if ((data["message"] = "Success")) {
+      console.log('data :>> ', data);
+      if (data["message"] == "Success") {
         this.bakInfo.bankFirstName = data["data"].bankFirstName;
         this.bakInfo.bankLastName = data["data"].bankLastName;
         this.bakInfo.bankName = data["data"].bankName;
@@ -171,5 +172,10 @@ export class DashboardProfileComponent implements OnInit {
   }
   openbaankdetail() {
     this.bankdetail = !this.bankdetail;
+  }
+
+  clickOnEmail(){
+    console.log('click on email')
+    this.msgService.openSnackBar('you can not edit your email ID', false);
   }
 }

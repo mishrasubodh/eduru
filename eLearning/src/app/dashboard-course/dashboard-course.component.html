@@ -146,7 +146,7 @@
 
                 </div>
                 <div class="col-md-12">
-                  <button mat-raised-button color="primary" (click)="submit(course)">Save</button>
+                  <button mat-raised-button color="primary" (click)="submit(course)" [disabled]="!enableSaveBtn" >Save</button>
                 </div>
               </div>
             </div>
