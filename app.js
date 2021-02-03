@@ -8,7 +8,12 @@ var bodyParser = require('body-parser');
 const morgan = require("morgan");
 var cors = require('cors');
 app.use(cors())   
- app.use(bodyParser.json())
+ //app.use(bodyParser.json())
+
+
+ app.use(bodyParser.json({limit:'50mb'}));
+ app.use(bodyParser.urlencoded({extended:true, limit:'50mb'}));
+
 
 app.use(express.static(path.join(__dirname, 'dist/new-website')));
 app.use(function(req, res, next) {

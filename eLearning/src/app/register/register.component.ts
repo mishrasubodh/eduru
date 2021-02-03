@@ -89,9 +89,6 @@ export class RegisterComponent implements OnInit {
       //       this.msgService.openSnackBar("data not registered", false);
       //     }
       //   );
-      
-
-
 
        let otpDetail= await this.sendOtpData(registerData.email)
        console.log('otpDetai otpDetai :>> ', otpDetail);

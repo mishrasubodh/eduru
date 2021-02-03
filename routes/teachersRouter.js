@@ -41,7 +41,8 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
 
 
   router.post('/:teacherId/UploadFile', upload.array('material', 50), async (req, res, next) => {
-   console.log('coming in UploadFile>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> :>>', req.files)
+   console.log('coming in UploadFile>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> :>>', req);
+
     const filePathArray = [];
     for (var i = 0; i < req.files.length; i++) {
       var filePath = req.files[i].path;
@@ -54,8 +55,9 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
     console.log('coming in  SaveFileWithDetail>>>>>>>>>>>>>>>>>>>:>>', req.body)
     const obj = JSON.parse(JSON.stringify(req.body));
    const materials = await new Materials
+    materials.courseName = obj.courseName;
     materials.category = obj.category;
-    materials.subCategory = obj.subCategory;
+    materials.subCategory = obj.SubCategory;
     materials.teacherId = req.params.teacherId;
     materials.amount = obj.amount;
     materials.description = obj.description;

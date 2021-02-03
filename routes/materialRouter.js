@@ -1,5 +1,4 @@
 const router = require("express").Router();
-
 console.log("coming here")
 const cat_subCat = {
   "category":[

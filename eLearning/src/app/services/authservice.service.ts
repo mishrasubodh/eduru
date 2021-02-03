@@ -62,11 +62,13 @@ getCategory(){
 }
 
   addCoures(id,data){ 
-     return this.http.post(this.url+`${id}/UploadFile`,data,{headers:this.httpOptions})
-
-    // http://192.168.1.154:3300/dashboard/5ffff461509d96372a41a5d4/UploadFile
-
-   // http://localhost:3300/dashboard/5ffc337c8001fe195083e022/UploadFile
+    console.log("data on add course api",data)
+     return this.http.post(this.url+`${id}/SaveFileWithDetail`,data,{headers:this.httpOptions})
+    // http://192.168.1.154:3300/dashboard/600a9c2489a0de3237afb4a2/SaveFileWithDetail
   }
- // {queryParams: { teacherId: id}}/,
+  uploadVideo(id,data){
+    return this.http.post(this.url+`${id}/UploadFile`,data)
+    // http://localhost:3300/dashboard/5ffc337c8001fe195083e022/UploadFile
+  }
+ 
 }

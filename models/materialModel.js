@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const materialSchema = new mongoose.Schema(
   {
+    courseName: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       required: true,

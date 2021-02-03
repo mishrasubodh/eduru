@@ -12,18 +12,19 @@ import { PopupService } from "../services/popup.service";
 export class DashboardCourseComponent implements OnInit {
   myFiles: string[] = [];
   imgFiles: string[] = [];
+  videoPath:[]
   sMsg: string = "";
   teacherID;
   category = [];
   subCategory = [];
   selectSubCat = [];
   course = {
-    name: "",
+    courseName: "",
     category: "",
     SubCategory: "",
     amount: "",
     description: "",
-    videoUrl: "",
+  
   };
   constructor(
     private router: Router,
@@ -57,82 +58,97 @@ export class DashboardCourseComponent implements OnInit {
       }
     });
   }
-  frmData = new FormData();
+ 
   getimgFileDetails(e) {
-   //. this.imgFiles.push(e.target.files[0]);
-   // this.frmData.append("fileUpload", e.target.files[0]);
-   // console.log("this.imgFilesthis.imgFiles :>> ", this.imgFiles);
+    //. this.imgFiles.push(e.target.files[0]);
+    // this.frmData.append("fileUpload", e.target.files[0]);
+    // console.log("this.imgFilesthis.imgFiles :>> ", this.imgFiles);
   }
   getFileDetails(e) {
-    for (var i = 0; i < e.target.files.length; i++) { 
+    for (var i = 0; i < e.target.files.length; i++) {
       this.myFiles.push(e.target.files[i]);
     }
-    console.log(this.myFiles)
+    console.log(this.myFiles);
   }
-  uploadFiles () {
-    for (var i = 0; i < this.myFiles.length; i++) { 
-      this.frmData.append("material", this.myFiles[i]);
+  
+  uploadFiles() {
+  const  frmData = new FormData();
+    for (var i = 0; i < this.myFiles.length; i++) {
+      console.log("comning in side loop");
+     frmData.append("material", this.myFiles[i]);
+      if (i == this.myFiles.length - 1) {
+        console.log("comning out side loop");
+        this.services
+          .uploadVideo(this.teacherID, frmData)
+          .subscribe((data:[]) => {
+            console.log("data :", data.length);
+            if (data.length>0) {
+              this.videoPath=data
+              this.msgService.openSnackBar("video uploaded successful", true);
+              // data.forEach(el=>{
+              // this.videoPath.push(el)
+              // })
+              
+             // this.router.navigate(["login"]);
+            } else {
+           
+              
+            }
+          });
+      }
     }
   }
   submit(courseData) {
     try {
-   if(!this.frmData.has("material")){
-    this.msgService.openSnackBar("please upload video First", false);
-        return;
-   }else{
-
-      // if (courseData.category == "") {
-      //   this.msgService.openSnackBar("please enter category", false);
-      //   return;
-      // }
-      // if (courseData.SubCategory == "") {
-      //   this.msgService.openSnackBar("please enter SubCategory", false);
-      //   return;
-      // }
-      // if (courseData.description == "") {
-      //   this.msgService.openSnackBar("please enter description", false);
-      //   return;
-      // }
-      // if (courseData.name == "") {
-      //   this.msgService.openSnackBar("please enter courseName", false);
-      //   return;
-      // }
-
-      // if (courseData.amount == "") {
-      //   this.msgService.openSnackBar("please  enter amount", false);
-      //   return;
-      // }
-      // if (this.myFiles.length <= 0) {
-      //   this.msgService.openSnackBar("please  please add video", false);
-      //   return;
-      // }
-      // if (this.imgFiles.length <= 0) {
-      //   this.msgService.openSnackBar(
-      //     "please select termandcondition & condition",
-      //     false
-      //   );
-      //   return;
-      // }
-      
-    //  this.frmData.append("material", this.myFiles);
-      this.frmData.append("category", courseData.category);
-      this.frmData.append("subCategory", courseData.SubCategory);
-      this.frmData.append("description",courseData.description);
-      this.frmData.append("name",courseData.name);
-      this.frmData.append("amount",courseData.amount); 
-      this.frmData.append("teacherId",this.teacherID);
-
-      this.services.addCoures(this.teacherID,this.frmData).subscribe((data) => {
-           console.log("data :", data);
-          if (data["message"] == "Success") {
-          this.msgService.openSnackBar("course added successful", true);
-          this.router.navigate(["login"]);
-          } else {
-          this.msgService.openSnackBar(data["message"], false);
+     
+        if (courseData.category == "") {
+          this.msgService.openSnackBar("please enter category", false);
           return;
         }
-      });
-    }
+        if (courseData.SubCategory == "") {
+          this.msgService.openSnackBar("please enter SubCategory", false);
+          return;
+        }
+        if (courseData.description == "") {
+          this.msgService.openSnackBar("please enter description", false);
+          return;
+        }
+        if (courseData.name == "") {
+          this.msgService.openSnackBar("please enter courseName", false);
+          return;
+        }
+
+        if (courseData.amount == "") {
+          this.msgService.openSnackBar("please  enter amount", false);
+          return;
+        }
+        // if (this.myFiles.length <= 0) {
+        //   this.msgService.openSnackBar("please  please add video", false);
+        //   return;
+        // }
+        // if (this.imgFiles.length <= 0) {
+        //   this.msgService.openSnackBar(
+        //     "please select termandcondition & condition",
+        //     false
+        //   );
+        //   return;
+        // } teacherId
+
+        courseData['teacherId']=this.teacherID
+        courseData['videoPath']=this.videoPath
+        this.services
+          .addCoures(this.teacherID,courseData)
+          .subscribe((data) => {
+            console.log("data :", data);
+            if (data["message"] == "Success") {
+              this.msgService.openSnackBar("course added successful", true);
+              this.router.navigate(["login"]);
+            } else {
+              this.msgService.openSnackBar(data["message"], false);
+              return;
+            }
+          });
+      
     } catch (err) {
       console.log("err :>> ", err.message);
     }
