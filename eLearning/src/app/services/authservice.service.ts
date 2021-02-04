@@ -71,4 +71,10 @@ getCategory(){
     // http://localhost:3300/dashboard/5ffc337c8001fe195083e022/UploadFile
   }
  
+getDataOnCategory(cat){
+  console.log('cat :>> ', cat);
+ return this.http.get(this.url+`material-byCategory/${cat}`,{headers:this.httpOptions})
+
+}
+
 }

@@ -4,18 +4,20 @@
           <h3> <span>LEVEL UP </span>YOUR KNOWLEDGE</h3>
       </div>
 
-      <mat-tab-group >
+      <!-- <mat-tab-group (selectedTabChange)="getCatDataonSelect($event)"> -->
+        <mat-tab-group (selectedTabChange)="getCatDataonSelect($event)" >
         <div *ngFor="let cate of category">
-        <mat-tab label="{{cate.name}}">
+        <mat-tab label="{{cate.name}}" >
+          <!-- <div *ngFor="let cate of category"> -->
           <div class="row">
-            <div class="col-md-3" (click)="openCourseDetail()">
+            <div class="col-md-3" (click)="openCourseDetail()" *ngFor="let Singlcate of singleCatData">
               <mat-card class="course-card">
-                <img mat-card-image src="../../assets/img/course1.png" alt="course">
+                <img mat-card-image src="../../../../../../mygitEDU/eduru/routes/public/uploads/Screenshot from 2020-12-15 19-12-32.png" alt="course">
                 <mat-card-content>
                   <div class="price">
-                    <h6>$79</h6>
+                    <h6>${{Singlcate.amount}}</h6>
                   </div>
-                   <h5>Lorem ipsum dolor sit ame consectetur</h5>
+                   <h5>{{Singlcate.courseName}}</h5>
                    <div class="rating">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -24,7 +26,7 @@
                     <i class="far fa-star"></i>
                     <span>5.0 (rating)</span>
                    </div>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. </p>
+                  <p> {{Singlcate.description}} </p>
                   <ul class="type">
                     <li><span><i class="fas fa-book">&nbsp;</i></span>Lessons</li>
                     <li><span><i class="fas fa-user">&nbsp;</i></span>Students</li>
@@ -35,6 +37,7 @@
           <div class="cmn-btn">
             <button type="button">View all courses</button>
           </div>
+          <!-- </div> -->
           </div>
         </mat-tab>
       </div>

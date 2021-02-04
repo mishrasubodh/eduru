@@ -12,15 +12,21 @@ import { AuthserviceService } from '../services/authservice.service'
 export class EducationCourseComponent implements OnInit {
   category:[]
   subCategory:[]
+  catname='ACADEMIC'
+  singleCatData
   constructor(
     private router: Router,
     public globalService : GlobalService,
     public msgService: PopupService,
     public authservice: AuthserviceService
-  ) { }
+  ) { 
+
+    this.getDataCategory(this.catname)
+  }
 
   ngOnInit() {
     this.categoryes()
+   
   }
   openCourseDetail(){
     this.router.navigate(['course-detail']);
@@ -36,5 +42,19 @@ export class EducationCourseComponent implements OnInit {
         this.subCategory = data["subCategory"];
       }
     });
+  }
+
+  getDataCategory(catname){
+    this.authservice.getDataOnCategory(catname).subscribe((data) => {
+          if(data['message']=='Success'){
+           this.singleCatData=data['data']
+          }
+    }, err=>{
+   this.msgService.openSnackBar('err getting single cat data',false)
+    })
+  }
+
+  getCatDataonSelect(data){
+    this.getDataCategory(data.tab.textLabel)
   }
 }
