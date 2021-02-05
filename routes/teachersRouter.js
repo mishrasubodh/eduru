@@ -53,9 +53,9 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
    // return res.status(200).json({ success: false, message: "success", data:materials });
   }),
   router.post('/:teacherId/SaveFileWithDetail', async (req, res, next) => {
-    console.log('coming in  SaveFileWithDetail>>>>>>>>>>>>>>>>>>>:>>', req)
-
+    //console.log('coming in  SaveFileWithDetail>>>>>>>>>>>>>>>>>>>:>>', req)
     const obj = JSON.parse(JSON.stringify(req.body));
+    console.log('object objobjobjobjobjobjobjobjobj:>>', obj)
    const materials = await new Materials
     materials.courseName = obj.courseName;
     materials.category = obj.category;
@@ -63,15 +63,11 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
     materials.teacherId = req.params.teacherId;
     materials.amount = obj.amount;
     materials.description = obj.description;
-    materials.videoImg = __dirname+'/public/uploads/Screen.png';
+    materials.videoImg = __dirname+'/public/screenshotsImg/Screen.png';
     materials.videoPath = obj.videoPath;
     await materials.save();
     return res.status(200).json({ success: false, message: "success", data:materials });
-    // res.send(materials);
   }),
-
-
-
 
   router.get("/getVideoByCategory/:category", teacherController.getVideoByCategory);
 

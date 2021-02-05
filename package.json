@@ -27,6 +27,8 @@
     "express-session": "^1.17.1",
     "ffmpeg": "0.0.4",
     "jsonwebtoken": "^8.5.1",
+    "loadash": "^1.0.0",
+    "mime-types": "^2.1.28",
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.15",
     "mongoose-mongodb-errors": "0.0.2",
@@ -39,7 +41,23 @@
     "path": "^0.12.7",
     "saslprep": "^1.0.3",
     "sendotp": "^1.2.9",
+    "serve-favicon": "^2.5.0",
     "socket.io": "^3.1.0",
-    "zip-folder": "^1.0.0"
+    "zip-folder": "^1.0.0",
+    "accesscontrol": "^2.2.1",
+    "corb": "0.0.1-security",
+    "email-validator": "^2.0.4",
+    "express-jwt": "^6.0.0",
+    "http-errors": "^1.8.0",
+    "lodash": "^4.17.20",
+    "mysql2": "^2.2.5",
+    "query-string": "^6.13.7",
+    "sequelize": "^6.3.5",
+    "url": "^0.11.0",
+    "x-xss-protection": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-standard": "^16.0.2"
   }
 }
