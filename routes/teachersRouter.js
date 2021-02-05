@@ -69,10 +69,5 @@ router.post("/saveScreenShotsOfVideo/:teacherId", teacherController.saveScreenSh
     return res.status(200).json({ success: false, message: "success", data:materials });
     // res.send(materials);
   }),
-
-
-
-
   router.get("/getVideoByCategory/:category", teacherController.getVideoByCategory);
-
   module.exports = router;

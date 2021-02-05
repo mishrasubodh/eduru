@@ -22,11 +22,11 @@ export class EducationCourseComponent implements OnInit {
   ) { 
 
     this.getDataCategory(this.catname)
+    console.log('urlllll :>> ',this.globalService.Url);
   }
-
   ngOnInit() {
     this.categoryes()
-   
+    console.log('urlllll :>> ',this.globalService.Url);
   }
   openCourseDetail(){
     this.router.navigate(['course-detail']);
