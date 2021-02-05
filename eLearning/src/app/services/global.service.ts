@@ -4,8 +4,9 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class GlobalService {
-  Url: string = 'http://localhost:3300/routes/public/uploads'
- 
+  //Url: string = 'http://localhost:3300/dashboard/img/bg5'
+  Url: string = 'http://localhost:3300/dashboard/screenshotsImg/bg5.png'
+  
   constructor() {}
 
   scrolData() {

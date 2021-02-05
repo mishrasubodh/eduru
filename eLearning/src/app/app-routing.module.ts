@@ -36,6 +36,7 @@ const routes: Routes = [
   {path: 'dashboard-course-edit', component: DashboardCourseEditComponent},
   {path: 'dashboard-revenue', component: DashboardRevenueComponent},
   {path: 'dashboard-chat', component: DashboardChatComponent},
+  {path: 'course-detail/:id', component: CourseDetailComponent},
   {path: 'course-detail', component: CourseDetailComponent},
   {path: 'course-page', component: CoursePageComponent},
   {path: 'teach-us-eduru' , component: TeachUsEduruComponent},

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GlobalService} from '../services/global.service'
-import { Router } from "@angular/router";
+import { Router,ActivatedRoute } from "@angular/router";
 import { PopupService } from '../services/popup.service'
 import { AuthserviceService } from '../services/authservice.service'
  
@@ -16,6 +16,7 @@ export class EducationCourseComponent implements OnInit {
   singleCatData
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     public globalService : GlobalService,
     public msgService: PopupService,
     public authservice: AuthserviceService
@@ -28,8 +29,9 @@ export class EducationCourseComponent implements OnInit {
     this.categoryes()
     console.log('urlllll :>> ',this.globalService.Url);
   }
-  openCourseDetail(){
-    this.router.navigate(['course-detail']);
+  openCourseDetail(id){
+    console.log('id :>> ', id._id);
+    this.router.navigate(['course-detail',id._id]);
     this.globalService.scrolData()
     
   }

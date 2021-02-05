@@ -76,5 +76,8 @@ getDataOnCategory(cat){
  return this.http.get(this.url+`material-byCategory/${cat}`,{headers:this.httpOptions})
 
 }
-
+currenteacherMeterailData(catId){
+  return this.http.get(this.url+`material-byTeacherId/${catId}`,{headers:this.httpOptions})
+//  http://192.168.1.154:3300/dashboard/material-byTeacherId/6012622836e230210f7ece80
+}
 }
