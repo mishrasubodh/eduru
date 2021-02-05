@@ -44,12 +44,8 @@ const cat_subCat = {
 router.get('/category_subcategory', async (req, res, next) => {
   res.send(cat_subCat);
   }),
-
   router.get('/material-byCategory/:categoryType', materialController.getMaterialByCategory);
   router.get('/material-bySubCategory/:subcategoryType', materialController.getMaterialBySubCategory);
   router.get('/material-byTeacherId/:teacherId', materialController.getMaterialByTeacherId);
-
   console.log('object :>>for commit purppse')
-
-
   module.exports = router;
