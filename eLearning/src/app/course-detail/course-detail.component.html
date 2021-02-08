@@ -1,8 +1,8 @@
-<div class="course-detail">
+<div class="course-detail" *ngIf="currentData">
     <div class="course-header">
         <div class="container">
             <div class="heading-top">
-                <h1>GENERAL</h1>
+                <h1>{{currentData.material[0].category}}</h1>
             </div>
         </div>
     </div>
@@ -29,18 +29,18 @@
                                   </li>
                                   <li>
                                       <p class="light">Teacher</p>
-                                      <p>Keeny Willson</p>
+                                      <p>{{currentData.teacherInfo[0].FirstName}}</p>
                                   </li>
                                   <li>
                                       <p class="light">Category</p>
-                                      <p>Design</p>
+                                      <p>{{currentData.material[0].category}}</p>
                                   </li>
                               </ul>
                             </div>
                             <div class="col-md-4">
                               <ul class="price-course">
                                   <li>
-                                      <h6>$ 300</h6>
+                                      <h6>${{currentData.material[0].amount}}</h6>
                                   </li>
                                   <li>
                                    <div class="cmn-btn">
@@ -61,65 +61,24 @@
                         <mat-tab label="Overview">
                             <div class="overview">
                               <h4>COURSE DESCRIPTION</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam vulputate ut pharetra sit amet aliquam. Ut eu sem integer vitae justo eget magna fermentum. Morbi tristique senectus et netus et malesuada fames. Morbi tristique senectus et netus et malesuada fames ac turpis. Volutpat blandit aliquam etiam erat velit. Gravida neque convallis a cras semper. Gravida cum sociis natoque penatibus et magnis dis parturient. Tincidunt nunc pulvinar sapien et ligula. Faucibus turpis in eu mi bibendum. Dolor sit amet consectetur adipiscing elit pellentesque. Tortor vitae purus faucibus ornare suspendisse sed nisi. Sit amet volutpat consequat mauris nunc congue nisi vitae suscipit. Vitae purus faucibus ornare suspendisse. Morbi tincidunt ornare massa eget egestas. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae.
+                              <p>{{currentData.material[0].description}}
                               </p>
-                              <h4>LEARNING OUTCOMES</h4>
-                              <ul>
-                                <li><p>Over 37 lectures and 55.5 hours of content!
-                                </p></li>
-                                <li><p>Testing Training Included.
-                                </p></li>
-                                <li><p>Learn Software Testing and Automation basics from a professional trainer from your own desk.
-                                </p></li>
-                                <li><p>Information packed practical training starting from basics to advanced testing techniques.
-                                </p></li>
-                                <li><p>Best suitable for beginners to advanced level users and who learn faster when demonstrated.</p></li>
-                                <li><p>Course content designed by considering current software testing technology and the job market.</p></li>
-                              </ul>
-                              <h4>CERTIFICATION</h4>
-                              <p>As a powerful high-quality LMS for WordPress, LearnPress is the best choice for any instructor, teacher, school, university, education project, eLearning and online course websites.</p>
+                      
                             </div>
                         </mat-tab>
                         <mat-tab label="Curriculum">
                               <div class="curriculum">
                                   <h5>LEARNPRESS INTERACTIVE CONTENT</h5>
-                                    <ul>
+                                    <ul *ngFor="let video of  currentData.material[0].videoPath; let i=index">
                                       <li>
                                           <div class="index">
-                                            <p>Lecture 1</p>
+                                            <p>Lecture {{i+1}}</p>
                                           </div>
-                                          <span>Interactive Video</span>
+                                          <span>{{video}}</span>
+
+                                        <span *ngIf="i==0">
                                           <a href="#">Free</a>
-                                      </li>
-                                      <li>
-                                          <div class="index">
-                                            <p>Lecture 2</p>
-                                          </div>
-                                          <span>What is LearnPress</span>
-                                      </li>
-                                      <li>
-                                          <div class="index">
-                                            <p>Lecture 3</p>
-                                          </div>
-                                          <span>How to use LearnPress</span>
-                                      </li>
-                                      <li>
-                                          <div class="index">
-                                            <p>Lecture 4</p>
-                                          </div>
-                                          <span>Certificate add-on</span>
-                                      </li>
-                                      <li>
-                                          <div class="index">
-                                            <p>Lecture 5</p>
-                                          </div>
-                                          <span>WooCommerce payments add-on</span>
-                                      </li>
-                                      <li>
-                                          <div class="index">
-                                            <p>Lecture 6</p>
-                                          </div>
-                                          <span>Co-instructors add-on</span>
+                                        </span>  
                                       </li>
                                     </ul>
                              
@@ -132,15 +91,15 @@
                                 <img src="../../assets/img/intructor-1.jpg" class="img-fluid" alt="intructor"/>
                               </li>
                               <li>
-                                  <p>Keeny Willson</p>                                  
+                                  <p>{{currentData.teacherInfo[0].FirstName}}</p>                                  
                                   <p class="light">Teacher</p>
                               </li>
                               <li>
                                   <p class="light">Category</p>
-                                  <p>Design</p>
+                                  <p>{{currentData.material[0].category}}</p>
                               </li>
                           </ul>
-                          <p>Keny White is Professor of the Department of Computer Science at Boston University, where he has been since 2004. He also currently serves as Chief Scientist of Guavus, Inc. During 2003-2004 he was a Visiting Associate Professor at the Laboratoire d'Infomatique de Paris VI (LIP6). He received a B.S. from Cornell University in 1992, and an M.S. from the State University of New York at Buffalo.</p>
+                          <p>{{currentData.material[0].category}}</p>
                           </div>
                         </mat-tab>
                         <!-- <mat-tab label="Reviews">

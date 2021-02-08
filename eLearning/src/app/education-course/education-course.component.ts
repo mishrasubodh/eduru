@@ -31,7 +31,7 @@ export class EducationCourseComponent implements OnInit {
   }
   openCourseDetail(id){
     console.log('id :>> ', id._id);
-    this.router.navigate(['course-detail',id._id]);
+    this.router.navigate(['course-detail',id.teacherId]);
     this.globalService.scrolData()
     
   }

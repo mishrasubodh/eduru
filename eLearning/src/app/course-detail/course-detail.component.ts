@@ -1,37 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import {GlobalService} from '../services/global.service'
-import { Router,ActivatedRoute } from "@angular/router";
-import { PopupService } from '../services/popup.service'
-import { AuthserviceService } from '../services/authservice.service'
+import { Component, OnInit } from "@angular/core";
+import { GlobalService } from "../services/global.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { PopupService } from "../services/popup.service";
+import { AuthserviceService } from "../services/authservice.service";
 
 @Component({
-  selector: 'app-course-detail',
-  templateUrl: './course-detail.component.html',
-  styleUrls: ['./course-detail.component.scss']
+  selector: "app-course-detail",
+  templateUrl: "./course-detail.component.html",
+  styleUrls: ["./course-detail.component.scss"],
 })
 export class CourseDetailComponent implements OnInit {
-  currentteacherID
+ currentteacherID;
+ currentData
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    public globalService : GlobalService,
+    public globalService: GlobalService,
     public msgService: PopupService,
     public authservice: AuthserviceService
   ) {
-    if( this.route.snapshot.paramMap.get('id')){
-      localStorage.setItem('currentteacherID',this.route.snapshot.paramMap.get('id'))
-      this.currentteacherID= localStorage.getItem('currentteacherID')
-       }
-   }
+   
+    this.currentteacherID= this.route.snapshot.paramMap.get("id")
+     
+    }
+  
 
   ngOnInit() {
-    console.log('object :>> ', this.currentteacherID);
+    
+    this.getcurrentTeacherVideoDetail(this.currentteacherID);
   }
- getcurrentTeacherVideoDetail(id){
-  this.authservice.currenteacherMeterailData(id).subscribe(data=>{
-console.log('data in course detail :>> ', data);
-  },err=>{
-this.msgService.openSnackBar('err',true)
-  })
- }
+  getcurrentTeacherVideoDetail(id) {
+    this.authservice.currenteacherMeterailData(id).subscribe(
+      (data) => {
+        console.log("data in course detail :>> ", data);
+        if(data['message']=='Success'){
+         this.currentData=data['data']
+        }
+      },
+      (err) => {
+        this.msgService.openSnackBar("err", true);
+      }
+    );
+  }
 }
